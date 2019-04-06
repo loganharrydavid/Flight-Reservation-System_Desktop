@@ -17,12 +17,22 @@ public class Account implements Comparable<Account> {
 
 	}
 
-	public Account(String firstname, String lastName, String userName,
-			String address, String email, String password, String securityQuestion, String State,
-			int zipCode, int ssn, String flightInfo) {
+	public Account(String firstname, String lastName, String userName, String address, String email, String password,
+			String securityQuestion, String State, int zipCode, int ssn, String flightInfo) {
+		
+		this.firstName = firstname;
+		this.lastName = lastName;
+		this.userName = userName;
+		this.address = address;
+		this.email = email;
+		this.password = password;
+		this.securityQuestion = securityQuestion;
+		this.state = State;
+		this.zipCode = zipCode;
+		this.ssn = ssn;
+		this.flightInfo = flightInfo;
 		
 	}
-		
 
 	public String getFirstName() {
 		return firstName;
@@ -111,14 +121,17 @@ public class Account implements Comparable<Account> {
 	public void setFlightInfo(String flightInfo) {
 		this.flightInfo = flightInfo;
 	}
-	
+	@Override
+	public String toString() {
+		return "";
+	}
+
 	@Override
 	public int compareTo(Account a) {
-		if(this.ssn == a.ssn) {	
+		if (this.ssn == a.ssn) {
 			return 0;
-		}else
-		return -1;		
+		} else
+			return -1;
 	}
-	
-	
+
 }

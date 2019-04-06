@@ -123,7 +123,8 @@ public class Account implements Comparable<Account> {
 	}
 	@Override
 	public String toString() {
-		return "";
+		return "\nFirst name " + this.getFirstName() + "\nLast name " +
+	this.getLastName() + "\nUsername " + this.getUserName();
 	}
 
 	@Override

@@ -16,7 +16,7 @@ public class Flight implements Comparable<Flight> {
 
 	public Flight(String departureCity, String destinationCity, String departTime, String arriveTime, String flightDate,
 			int flightNumber, int numberOfSeats) {
-		
+
 		this.departureCity = departureCity;
 		this.destinationCity = destinationCity;
 		this.departTime = departTime;
@@ -82,13 +82,19 @@ public class Flight implements Comparable<Flight> {
 	public void setNumberOfSeats(int numberOfSeats) {
 		this.numberOfSeats = numberOfSeats;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "\nFlight number: " + this.getFlightNumber() + "\nDeparture time: " + this.getDepartTime()
+				+ "\nDeparture City: " + this.getDepartureCity() + "\nDestination City: " + this.getDestinationCity();
+	}
+
 	@Override
 	public int compareTo(Flight f) {
-		if(flightNumber == f.flightNumber) {
+		if (flightNumber == f.flightNumber) {
 			return -1;
-		}else
-		return 0;
+		} else
+			return 0;
 	}
 
 }

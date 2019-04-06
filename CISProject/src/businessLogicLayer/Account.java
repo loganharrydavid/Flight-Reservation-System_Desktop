@@ -1,6 +1,7 @@
 package businessLogicLayer;
 
 public class Account implements Comparable<Account> {
+	
 	private String firstName;
 	private String lastName;
 	private String userName;
@@ -14,7 +15,7 @@ public class Account implements Comparable<Account> {
 	private String flightInfo;
 
 	public Account() {
-
+		
 	}
 
 	public Account(String firstname, String lastName, String userName, String address, String email, String password,
@@ -129,7 +130,7 @@ public class Account implements Comparable<Account> {
 
 	@Override
 	public int compareTo(Account a) {
-		if (this.ssn == a.ssn) {
+		if (ssn == a.ssn) {
 			return 0;
 		} else
 			return -1;

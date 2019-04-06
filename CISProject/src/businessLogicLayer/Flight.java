@@ -92,9 +92,9 @@ public class Flight implements Comparable<Flight> {
 	@Override
 	public int compareTo(Flight f) {
 		if (flightNumber == f.flightNumber) {
-			return -1;
-		} else
 			return 0;
+		} else
+			return -1;
 	}
 
 }

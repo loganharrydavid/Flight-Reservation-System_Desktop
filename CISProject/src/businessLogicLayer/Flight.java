@@ -1,5 +1,8 @@
 package businessLogicLayer;
 
+
+import java.util.ArrayList;
+
 public class Flight implements Comparable<Flight> {
 
 	private String departureCity;
@@ -9,6 +12,7 @@ public class Flight implements Comparable<Flight> {
 	private String flightDate;
 	private int flightNumber;
 	private int numberOfSeats;
+	private ArrayList<Account> passengers;
 
 	public Flight() {
 
@@ -16,7 +20,7 @@ public class Flight implements Comparable<Flight> {
 
 	public Flight(String departureCity, String destinationCity, String departTime, String arriveTime, String flightDate,
 			int flightNumber, int numberOfSeats) {
-		
+
 		this.departureCity = departureCity;
 		this.destinationCity = destinationCity;
 		this.departTime = departTime;
@@ -26,7 +30,14 @@ public class Flight implements Comparable<Flight> {
 		this.numberOfSeats = numberOfSeats;
 
 	}
+	
+	public ArrayList<Account> getPassengers() {
+		return passengers;
+	}
 
+	public void setPassengers(ArrayList<Account> passengers) {
+		this.passengers = passengers;
+	}
 	public String getDepartureCity() {
 		return departureCity;
 	}
@@ -82,13 +93,19 @@ public class Flight implements Comparable<Flight> {
 	public void setNumberOfSeats(int numberOfSeats) {
 		this.numberOfSeats = numberOfSeats;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "\nFlight number: " + this.getFlightNumber() + "\nDeparture time: " + this.getDepartTime()
+				+ "\nDeparture City: " + this.getDepartureCity() + "\nDestination City: " + this.getDestinationCity();
+	}
+
 	@Override
 	public int compareTo(Flight f) {
-		if(flightNumber == f.flightNumber) {
+		if (flightNumber == f.flightNumber) {
+			return 0;
+		} else
 			return -1;
-		}else
-		return 0;
 	}
 
 }

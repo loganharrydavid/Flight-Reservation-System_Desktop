@@ -1,6 +1,10 @@
 package businessLogicLayer;
 
+
+import java.util.ArrayList;
+
 public class Account implements Comparable<Account> {
+	
 	private String firstName;
 	private String lastName;
 	private String userName;
@@ -11,14 +15,14 @@ public class Account implements Comparable<Account> {
 	private String state;
 	private int zipCode;
 	private int ssn;
-	private String flightInfo;
+	private ArrayList<Flight> flights;
 
 	public Account() {
-
+		
 	}
 
 	public Account(String firstname, String lastName, String userName, String address, String email, String password,
-			String securityQuestion, String State, int zipCode, int ssn, String flightInfo) {
+			String securityQuestion, String State, int zipCode, int ssn) {
 		
 		this.firstName = firstname;
 		this.lastName = lastName;
@@ -30,8 +34,14 @@ public class Account implements Comparable<Account> {
 		this.state = State;
 		this.zipCode = zipCode;
 		this.ssn = ssn;
-		this.flightInfo = flightInfo;
 		
+	}
+	public ArrayList<Flight> getFlights() {
+		return flights;
+	}
+
+	public void setFlights(ArrayList<Flight> flights) {
+		this.flights = flights;
 	}
 
 	public String getFirstName() {
@@ -114,21 +124,17 @@ public class Account implements Comparable<Account> {
 		this.ssn = ssn;
 	}
 
-	public String getFlightInfo() {
-		return flightInfo;
-	}
 
-	public void setFlightInfo(String flightInfo) {
-		this.flightInfo = flightInfo;
-	}
+	
 	@Override
 	public String toString() {
-		return "";
+		return "\nFirst name " + this.getFirstName() + "\nLast name " +
+	this.getLastName() + "\nUsername " + this.getUserName();
 	}
 
 	@Override
 	public int compareTo(Account a) {
-		if (this.ssn == a.ssn) {
+		if (ssn == a.ssn) {
 			return 0;
 		} else
 			return -1;

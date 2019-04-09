@@ -10,7 +10,7 @@ import javafx .scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
-/*when we click on the item we want some soft of action which
+/*when we click on the item we want some sort of action which
  * are the events to do so we have to implement event handler. 
  *
  */

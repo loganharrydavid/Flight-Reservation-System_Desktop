@@ -8,7 +8,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 /**
 *
-* @author zoranpavlovic.blogspot.com
+* 
 */
 public class SplashScreen2 extends Application {
         /**

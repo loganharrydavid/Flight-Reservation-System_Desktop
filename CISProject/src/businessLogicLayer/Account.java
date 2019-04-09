@@ -7,11 +7,9 @@ public class Account implements Comparable<Account> {
 	
 	private String firstName;
 	private String lastName;
-	private String userName;
+	private UserLogin login;
 	private String address;
 	private String email;
-	private String password;
-	private String securityQuestion;
 	private String state;
 	private int zipCode;
 	private int ssn;
@@ -21,20 +19,25 @@ public class Account implements Comparable<Account> {
 		
 	}
 
-	public Account(String firstname, String lastName, String userName, String address, String email, String password,
-			String securityQuestion, String State, int zipCode, int ssn) {
+	public Account(UserLogin login, String firstname, String lastName, String address, String email,
+			String State, int zipCode, int ssn) {
 		
 		this.firstName = firstname;
 		this.lastName = lastName;
-		this.userName = userName;
+		this.login = login;
 		this.address = address;
 		this.email = email;
-		this.password = password;
-		this.securityQuestion = securityQuestion;
 		this.state = State;
 		this.zipCode = zipCode;
 		this.ssn = ssn;
 		
+	}
+	public UserLogin getLogin() {
+		return login;
+	}
+
+	public void setLogin(UserLogin login) {
+		this.login = login;
 	}
 	public ArrayList<Flight> getFlights() {
 		return flights;
@@ -60,14 +63,6 @@ public class Account implements Comparable<Account> {
 		this.lastName = lastName;
 	}
 
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
 	public String getAddress() {
 		return address;
 	}
@@ -84,21 +79,6 @@ public class Account implements Comparable<Account> {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getSecurityQuestion() {
-		return securityQuestion;
-	}
-
-	public void setSecurityQuestion(String securityQuestion) {
-		this.securityQuestion = securityQuestion;
-	}
 
 	public String getState() {
 		return state;
@@ -129,7 +109,7 @@ public class Account implements Comparable<Account> {
 	@Override
 	public String toString() {
 		return "\nFirst name " + this.getFirstName() + "\nLast name " +
-	this.getLastName() + "\nUsername " + this.getUserName();
+	this.getLastName() + "\nUsername " + this.login.getUserName();
 	}
 
 	@Override

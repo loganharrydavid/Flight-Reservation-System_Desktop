@@ -11,7 +11,7 @@ public class Flight implements Comparable<Flight> {
 	private String arriveTime;
 	private String flightDate;
 	private int flightNumber;
-	private int numberOfSeats;
+	private int numberOfSeats = 60;
 	private ArrayList<Account> passengers;
 
 	public Flight() {

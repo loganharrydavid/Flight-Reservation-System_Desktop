@@ -25,7 +25,7 @@ public class Account implements Comparable<Account> {
 	}
 
 	public Account(String firstname, String lastName, String address, String email,
-			String State, int zipCode, String ssn, String userName, String password, String sq, String sa) {
+			String State, int zipCode, String ssn, String userName, String password, String sq) {
 		
 		this.firstName = firstname;
 		this.lastName = lastName;
@@ -37,7 +37,6 @@ public class Account implements Comparable<Account> {
 		this.userName = userName;
 		this.password = password;
 		this.securityQuestion = sq;
-		this.securityAnswer = sa;
 		this.accountID = createAccountID();
 		
 	}
@@ -161,6 +160,14 @@ public class Account implements Comparable<Account> {
 	public void setSecurityAnswer(String securityAnswer) {
 		this.securityAnswer = securityAnswer;
 	}
+	public static void generateAccount(String fname, String lname, String address,String email,
+		String state, int zip, String ssn, String un, String pword, String secQuestion) {
+		
+		
+		Account  acct1 = new Account(fname,lname,address,email,state, zip, ssn,un,pword,secQuestion);
+		
+		
+	}
 
 	
 	@Override
@@ -176,6 +183,7 @@ public class Account implements Comparable<Account> {
 		} else
 			return -1;
 	}
+	
 
 
 }

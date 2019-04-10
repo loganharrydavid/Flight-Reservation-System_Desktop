@@ -39,7 +39,7 @@ public class Registration extends Application {
 	TextField SSNInput;
 	TextField SecurityQuestionInput;
 	Button submitButton;
-
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -107,6 +107,13 @@ public class Registration extends Application {
 		confirmPasswordInput.setPromptText(" Enter Confirm Password ");
 		GridPane.setConstraints(confirmPasswordInput, 1, 5);
 		
+		//Email
+		email = new Label("Email: ");
+		GridPane.setConstraints(email, 2, 0);
+		emailInput = new TextField();
+		emailInput.setPromptText("Enter Email Address: ");
+		GridPane.setConstraints(emailInput, 2, 1);
+		
 		// SSN
 		SSN = new Label(" Soical sercurity number: ");
 		GridPane.setConstraints(SSN, 1, 6);
@@ -122,11 +129,11 @@ public class Registration extends Application {
 		GridPane.setConstraints(SecurityQuestionInput, 1, 9);
 		
 		submitButton = new Button(" Submit Registration ");
-	    GridPane.setConstraints(submitButton, 0, 2);
-		
+	    GridPane.setConstraints(submitButton, 0, 10);
+		//Need to add Security Answer
 		
 		grid.getChildren().addAll(firstName, firstNameInput, lastName, lastNameInput, address,
-				                  addressInput, zipCode, zipCodeInput
+				                 addressInput, zipCode, zipCodeInput,email,emailInput
 				                  ,state, stateInput,username, userNameInput, 
 				                  passwords, passwordInput, confirmPasswords, 
 				                  confirmPasswordInput, SSN, SSNInput,
@@ -135,17 +142,23 @@ public class Registration extends Application {
 		
 		
 		scene = new Scene(grid, 600,600);
+		primaryStage.setTitle("Registration");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
 		submitButton.setOnAction(e->{
-			Account acct = new Account(firstNameInput);
-			//Here we will call instance of a new javaFX class that displays "Thank you for registering"
-			//And whatever the next options are, like BOOK FLIGHT, or LOOK UP FLIGHT
+			
+		Account.generateAccount(firstNameInput.getText(),lastNameInput.getText(),addressInput.getText(),
+					emailInput.getText(),stateInput.getText(),Integer.parseInt(zipCodeInput.getText()),
+					SSNInput.getText(), userNameInput.getText(), passwordInput.getText(), 
+					SecurityQuestionInput.getText());
+			 
+			MainMenu main =  new MainMenu();
+			
 			try {
-				reg.start(primaryStage);
+				main.start(primaryStage);
 			} catch (Exception e1) {
-				// TODO Auto-generated catch block
+				
 				e1.printStackTrace();
 			}
 		});

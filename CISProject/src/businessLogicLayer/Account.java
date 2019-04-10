@@ -136,7 +136,8 @@ public class Account implements Comparable<Account> {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
+//getPassword and setPassword will display the security question and require the correct answer to return or change
+//the password
 	public String getPassword() {
 		return password;
 	}
@@ -165,8 +166,7 @@ public class Account implements Comparable<Account> {
 	@Override
 	public String toString() {
 		return "\nFirst name " + this.getFirstName() + "\nLast name " +
-	this.getLastName() + "\nUsername " + this.getUserName() +"\nAccount ID: " + getAccountID()
-	+ "\nZipcode: " + getZipCode();
+	this.getLastName() + "\nUsername " + this.getUserName() +"\nAccount ID: " + getAccountID();
 	}
 
 	@Override

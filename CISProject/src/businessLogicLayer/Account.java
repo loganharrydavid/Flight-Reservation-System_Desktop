@@ -166,7 +166,7 @@ public class Account implements Comparable<Account> {
 		
 		Account  acct1 = new Account(fname,lname,address,email,state, zip, ssn,un,pword,secQuestion);
 		
-		
+		System.out.println(acct1.toString());	
 	}
 
 	

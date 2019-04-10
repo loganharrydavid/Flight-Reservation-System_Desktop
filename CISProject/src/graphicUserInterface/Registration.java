@@ -34,7 +34,7 @@ public class Registration extends Application {
 	TextField stateInput;
 	TextField userNameInput;
 	TextField emailInput;
-	TextField passwordInput;
+	PasswordField passwordInput;
 	TextField confirmPasswordInput;
 	TextField SSNInput;
 	TextField SecurityQuestionInput;
@@ -96,7 +96,7 @@ public class Registration extends Application {
 		//Passwords
 		passwords = new Label(" Password: ");
 		GridPane.setConstraints(passwords, 1, 2);
-		passwordInput = new TextField();
+		passwordInput = new PasswordField();
 		passwordInput.setPromptText("Enter you passwords ");
 		GridPane.setConstraints(passwordInput,1, 3);
 		
@@ -153,10 +153,10 @@ public class Registration extends Application {
 					SSNInput.getText(), userNameInput.getText(), passwordInput.getText(), 
 					SecurityQuestionInput.getText());
 			 
-			MainMenu main =  new MainMenu();
+			MainMenu mainMenu =  new MainMenu();
 			
 			try {
-				main.start(primaryStage);
+				mainMenu.start(primaryStage);
 			} catch (Exception e1) {
 				
 				e1.printStackTrace();

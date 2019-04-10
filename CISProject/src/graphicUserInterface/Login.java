@@ -24,6 +24,7 @@ public class Login extends Application {
 	Button loginButton;
 	Color color;
 	Button SignUpButton;
+	
 	public static void main(String[] args) {
 		launch(args);
 	}

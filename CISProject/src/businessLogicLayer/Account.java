@@ -5,40 +5,65 @@ import java.util.ArrayList;
 
 public class Account implements Comparable<Account> {
 	
+	private String accountID;
 	private String firstName;
 	private String lastName;
-	private UserLogin login;
 	private String address;
 	private String email;
 	private String state;
 	private int zipCode;
-	private int ssn;
+	private String ssn;
 	private ArrayList<Flight> flights;
+	private String userName;
+	private String password;
+	private String securityQuestion;
+	private String securityAnswer;
+	
 
 	public Account() {
 		
 	}
 
-	public Account(UserLogin login, String firstname, String lastName, String address, String email,
-			String State, int zipCode, int ssn) {
+	public Account(String firstname, String lastName, String address, String email,
+			String State, int zipCode, String ssn, String userName, String password, String sq, String sa) {
 		
 		this.firstName = firstname;
 		this.lastName = lastName;
-		this.login = login;
 		this.address = address;
 		this.email = email;
 		this.state = State;
 		this.zipCode = zipCode;
 		this.ssn = ssn;
+		this.userName = userName;
+		this.password = password;
+		this.securityQuestion = sq;
+		this.securityAnswer = sa;
+		this.accountID = createAccountID();
 		
 	}
-	public UserLogin getLogin() {
-		return login;
+	
+	//Creates a new unique Account ID as part of the Account Object when a new Account is created
+	public String createAccountID() {
+		
+		String id = "ACI";
+		
+		id += this.firstName.charAt(0);
+		id += this.lastName.charAt(0);
+		
+		for(int i = 5; i <= 7; i++) {
+			
+			id += (int)(Math.random() * 10);
+		}
+		return id;
+	}
+	public String getAccountID() {
+		return accountID;
 	}
 
-	public void setLogin(UserLogin login) {
-		this.login = login;
+	public void setAccountID(String accountID) {
+		this.accountID = accountID;
 	}
+	
 	public ArrayList<Flight> getFlights() {
 		return flights;
 	}
@@ -96,20 +121,52 @@ public class Account implements Comparable<Account> {
 		this.zipCode = zipCode;
 	}
 
-	public int getSsn() {
+	public String getSsn() {
 		return ssn;
 	}
 
-	public void setSsn(int ssn) {
+	public void setSsn(String ssn) {
 		this.ssn = ssn;
 	}
+	
+	public String getUserName() {
+		return userName;
+	}
 
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getSecurityQuestion() {
+		return securityQuestion;
+	}
+
+	public void setSecurityQuestion(String securityQuestion) {
+		this.securityQuestion = securityQuestion;
+	}
+
+	public String getSecurityAnswer() {
+		return securityAnswer;
+	}
+
+	public void setSecurityAnswer(String securityAnswer) {
+		this.securityAnswer = securityAnswer;
+	}
 
 	
 	@Override
 	public String toString() {
 		return "\nFirst name " + this.getFirstName() + "\nLast name " +
-	this.getLastName() + "\nUsername " + this.login.getUserName();
+	this.getLastName() + "\nUsername " + this.getUserName() +"\nAccount ID: " + getAccountID()
+	+ "\nZipcode: " + getZipCode();
 	}
 
 	@Override
@@ -119,5 +176,6 @@ public class Account implements Comparable<Account> {
 		} else
 			return -1;
 	}
+
 
 }

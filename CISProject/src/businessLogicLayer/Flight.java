@@ -93,6 +93,13 @@ public class Flight implements Comparable<Flight> {
 	public void setNumberOfSeats(int numberOfSeats) {
 		this.numberOfSeats = numberOfSeats;
 	}
+	
+	public void bookFlight(){
+		
+		java.util.Scanner input = new java.util.Scanner(System.in);
+		
+		
+	}
 
 	@Override
 	public String toString() {

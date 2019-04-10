@@ -1,6 +1,6 @@
 package graphicUserInterface;
 
-
+import businessLogicLayer.Account;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
 
 public class Registration extends Application {
 	
@@ -37,6 +38,7 @@ public class Registration extends Application {
 	TextField confirmPasswordInput;
 	TextField SSNInput;
 	TextField SecurityQuestionInput;
+	Button submitButton;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -119,6 +121,8 @@ public class Registration extends Application {
 		SecurityQuestionInput.setPromptText(" Favorite vication place ");
 		GridPane.setConstraints(SecurityQuestionInput, 1, 9);
 		
+		submitButton = new Button(" Submit Registration ");
+	    GridPane.setConstraints(submitButton, 0, 2);
 		
 		
 		grid.getChildren().addAll(firstName, firstNameInput, lastName, lastNameInput, address,
@@ -126,7 +130,7 @@ public class Registration extends Application {
 				                  ,state, stateInput,username, userNameInput, 
 				                  passwords, passwordInput, confirmPasswords, 
 				                  confirmPasswordInput, SSN, SSNInput,
-				                  SecurityQuestion, SecurityQuestionInput);
+				                  SecurityQuestion, SecurityQuestionInput,submitButton);
 		
 		
 		
@@ -134,6 +138,17 @@ public class Registration extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
+		submitButton.setOnAction(e->{
+			Account acct = new Account(firstNameInput);
+			//Here we will call instance of a new javaFX class that displays "Thank you for registering"
+			//And whatever the next options are, like BOOK FLIGHT, or LOOK UP FLIGHT
+			try {
+				reg.start(primaryStage);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
 		
 		
 	

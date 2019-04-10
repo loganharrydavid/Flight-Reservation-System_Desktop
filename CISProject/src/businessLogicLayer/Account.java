@@ -171,7 +171,7 @@ public class Account implements Comparable<Account> {
 
 	@Override
 	public int compareTo(Account a) {
-		if (ssn == a.ssn) {
+		if (accountID == a.accountID) {
 			return 0;
 		} else
 			return -1;

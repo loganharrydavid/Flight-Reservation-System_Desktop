@@ -1,11 +1,8 @@
 package graphicUserInterface;
 
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Text;
-
 import javafx.application.Application;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,8 +10,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 

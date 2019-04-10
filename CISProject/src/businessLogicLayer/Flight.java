@@ -4,29 +4,29 @@ package businessLogicLayer;
 import java.util.ArrayList;
 
 public class Flight implements Comparable<Flight> {
-
+	
+	private int flightNumber;
 	private String departureCity;
 	private String destinationCity;
 	private String departTime;
 	private String arriveTime;
 	private String flightDate;
-	private int flightNumber;
-	private int numberOfSeats = 60;
 	private ArrayList<Account> passengers;
-
+	private int numberOfSeats;
+	
 	public Flight() {
 
 	}
 
 	public Flight(String departureCity, String destinationCity, String departTime, String arriveTime, String flightDate,
-			int flightNumber, int numberOfSeats) {
-
+			int flightNumber,int numberOfSeats) {
+		
+		this.flightNumber = flightNumber;
 		this.departureCity = departureCity;
 		this.destinationCity = destinationCity;
 		this.departTime = departTime;
 		this.arriveTime = arriveTime;
 		this.flightDate = flightDate;
-		this.flightNumber = flightNumber;
 		this.numberOfSeats = numberOfSeats;
 
 	}

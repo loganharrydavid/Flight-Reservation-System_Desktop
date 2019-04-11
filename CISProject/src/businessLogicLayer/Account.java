@@ -2,6 +2,7 @@ package businessLogicLayer;
 
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class Account implements Comparable<Account> {
 	
@@ -37,11 +38,15 @@ public class Account implements Comparable<Account> {
 		this.userName = userName;
 		this.password = password;
 		this.securityQuestion = sq;
+		this.securityAnswer = "default";
 		this.accountID = createAccountID();
 		
 	}
 	
-	//Creates a new unique Account ID as part of the Account Object when a new Account is created
+	/* 
+	 * Creates a unique Account ID as part of 
+	 * the Account Object when a new Account is created
+	 */
 	public String createAccountID() {
 		
 		String id = "ACI";
@@ -55,20 +60,20 @@ public class Account implements Comparable<Account> {
 		}
 		return id;
 	}
+	
+	
 	public String getAccountID() {
 		return accountID;
-	}
-
-	public void setAccountID(String accountID) {
-		this.accountID = accountID;
 	}
 	
 	public ArrayList<Flight> getFlights() {
 		return flights;
 	}
 
-	public void setFlights(ArrayList<Flight> flights) {
-		this.flights = flights;
+	public void addFlight(Flight flight) {
+		
+		this.flights.add(flight);
+		
 	}
 
 	public String getFirstName() {
@@ -135,10 +140,26 @@ public class Account implements Comparable<Account> {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-//getPassword and setPassword will display the security question and require the correct answer to return or change
-//the password
-	public String getPassword() {
-		return password;
+	
+	
+/* getPassword and setPassword will require input of answer to security question
+ * to return the password and/or set a new one
+ */
+
+	public String getPassword(String userAnswer, String securityAnswer) throws InputMismatchException {
+		
+		try {
+			if(userAnswer.equalsIgnoreCase(this.securityAnswer)){
+				return this.password;
+			}else {
+					throw new InputMismatchException("Wrong answer");
+					}
+			
+		}
+			catch(InputMismatchException ex) {
+				return ex.getMessage();
+			}
+			
 	}
 
 	public void setPassword(String password) {

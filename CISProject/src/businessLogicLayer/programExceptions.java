@@ -1,9 +1,22 @@
 package businessLogicLayer;
 
-public class programExceptions extends Exception{
+public class programExceptions {
 	
-	//this class will define the specific exception objects we will need at various
-	//levels of our program
+	 class SecurityQuestionException extends Exception{
+		
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public SecurityQuestionException(String message) {
+			super(message);
+		}
+		
+		
+	}
+	 
+	 
 	
 
 }

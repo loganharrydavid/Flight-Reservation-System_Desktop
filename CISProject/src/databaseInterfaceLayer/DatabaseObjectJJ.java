@@ -23,20 +23,24 @@ public class DatabaseObjectJJ {
 			
 			System.out.println("databse connected! ");
 			
-			String sqlQuery = "USE JavaJesusDB;" + 
-					"INSERT INTO Account (username, password01)" + 
-					"VALUES ( ?, ?)";
+			
+			String sqlQuery = 
+			" INSERT INTO Account(username, password01)"
+			+ " VALUES(?, ?);";
 			
 			
 			//the prepared statement is more efficient to execute the same or similar database statement repeatedly
 			PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
 			
+			String bye = "bye";
+			String fafafa="fafafaf";
 			
 			
-			preparedStatement.setString(1, "bye");
-			preparedStatement.setString(2, "falicia");
+			preparedStatement.setString(1, bye);
+			preparedStatement.setString(2, fafafa);
 			
 			preparedStatement.executeUpdate();
+			
 			
 			connection.close();
 			

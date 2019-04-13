@@ -4,8 +4,8 @@ import java.sql.*;
 
 public class DatabaseObjectJJ {
 	
-	//location of database 
-	static String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB?verifyServerCertificate=false&useSSL=true";
+	//location of database //set verifity certificate to false to not use SSL to get rid of the verification error
+	static String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB?verifyServerCertificate=false&useSSL=false";
 	static String databaseUsername ="root";
 	static String databasePassword = "1234abcd";
 	
@@ -23,24 +23,37 @@ public class DatabaseObjectJJ {
 			
 			System.out.println("databse connected! ");
 			
-			String sqlQuery = "'USE JavaJesusDB;'" + 
-					"'INSERT INTO Account (username, password01)'" + 
-					"'VALUES ('bye', 'moon');'";
+			String sqlQuery = "USE JavaJesusDB;" + 
+					"INSERT INTO Account (username, password01)" + 
+					"VALUES ( ?, ?)";
+			
 			
 			//the prepared statement is more efficient to execute the same or similar database statement repeatedly
 			PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
 			
+			
+			
+			preparedStatement.setString(1, "bye");
+			preparedStatement.setString(2, "falicia");
+			
+			preparedStatement.executeUpdate();
+			
+			connection.close();
+			
 			//execute the query
-			ResultSet rSet = preparedStatement.executeQuery();
+			//ResultSet rSet = preparedStatement.executeQuery();
 			
-			//look through database
-			//while (rSet.next()) {
-				
-				//do whatever
-				
-				
-			//}
 			
+			
+			
+//			//look through database
+//			while (rSet.next()) {
+//				
+//				//do whatever
+//				
+//				
+//			}
+//			
 			
 			
 			

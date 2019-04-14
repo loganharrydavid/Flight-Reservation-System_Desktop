@@ -39,26 +39,7 @@ public class Account implements Comparable<Account> {
 		this.password = password;
 		this.securityQuestion = sq;
 		this.securityAnswer = "default";
-		this.accountID = createAccountID();
-		
-	}
-	
-	/* 
-	 * Creates a unique Account ID as part of 
-	 * the Account Object when a new Account is created
-	 */
-	public String createAccountID() {
-		
-		String id = "ACI";
-		
-		id += this.firstName.charAt(0);
-		id += this.lastName.charAt(0);
-		
-		for(int i = 5; i <= 7; i++) {
-			
-			id += (int)(Math.random() * 10);
-		}
-		return id;
+
 	}
 	
 	

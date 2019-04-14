@@ -10,10 +10,17 @@ public class DatabaseObjectJJ {
 	static String databasePassword = "Redwall12";
 	
 	
-	public static void main(String[] args) {
+	public static void main(String [] args) {
 		
+		DatabaseObjectJJ DBO = new DatabaseObjectJJ();
+		
+		DBO.setAccountIDValue("12345");
+	}
+	
+	public void setAccountIDValue(String DBvalue) {
 		
 		try {
+			
 			
 			//driver location
 			Class.forName("java.sql.Driver");
@@ -32,7 +39,7 @@ public class DatabaseObjectJJ {
 			//the prepared statement is more efficient to execute the same or similar database statement repeatedly
 			PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
 			
-			String bye = "ADD SOMETHING";
+			String bye = DBvalue;
 		
 			
 			
@@ -46,8 +53,6 @@ public class DatabaseObjectJJ {
 			
 			//execute the query
 			//ResultSet rSet = preparedStatement.executeQuery();
-			
-			
 			
 			
 //			//look through database

@@ -1,7 +1,5 @@
 package businessLogicLayer;
 
-
-
 import java.util.InputMismatchException;
 
 public class Account implements Comparable<Account> {

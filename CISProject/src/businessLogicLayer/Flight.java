@@ -10,7 +10,7 @@ public class Flight implements Comparable<Flight> {
 	private String departTime;
 	private String arriveTime;
 	private String flightDate;
-	private Account[] passengers;
+	private String passengersAccountID;
 	private int numberOfSeats;
 	
 	public Flight() {
@@ -30,15 +30,13 @@ public class Flight implements Comparable<Flight> {
 
 	}
 	
-	
 
-
-	public Account[] getPassengers() {
-		return passengers;
+	public String getPassengersAccountID() {
+		return passengersAccountID;
 	}
 
-	public void setPassengers(Account[] passengers) {
-		this.passengers = passengers;
+	public void addPassengersAccountID(String passengersAccountID) {
+		this.passengersAccountID = passengersAccountID;
 	}
 
 	public String getDepartureCity() {

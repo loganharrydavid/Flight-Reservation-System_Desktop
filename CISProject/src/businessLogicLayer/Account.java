@@ -1,7 +1,7 @@
 package businessLogicLayer;
 
 
-import java.util.ArrayList;
+
 import java.util.InputMismatchException;
 
 public class Account implements Comparable<Account> {
@@ -14,7 +14,7 @@ public class Account implements Comparable<Account> {
 	private String state;
 	private int zipCode;
 	private String ssn;
-	private ArrayList<Flight> flights;
+	private Flight[] flights;
 	private String userName;
 	private String password;
 	private String securityQuestion;
@@ -46,15 +46,17 @@ public class Account implements Comparable<Account> {
 	public String getAccountID() {
 		return accountID;
 	}
-	
-	public ArrayList<Flight> getFlights() {
+
+	public Flight[] getFlights() {
 		return flights;
 	}
 
-	public void addFlight(Flight flight) {
-		
-		this.flights.add(flight);
-		
+	public void setFlights(Flight[] flights) {
+		this.flights = flights;
+	}
+
+	public void setAccountID(String accountID) {
+		this.accountID = accountID;
 	}
 
 	public String getFirstName() {

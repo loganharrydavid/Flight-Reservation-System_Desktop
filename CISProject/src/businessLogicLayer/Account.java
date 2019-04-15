@@ -12,7 +12,7 @@ public class Account implements Comparable<Account> {
 	private String state;
 	private int zipCode;
 	private String ssn;
-	private Flight[] flights;
+	private Flight flight;
 	private String userName;
 	private String password;
 	private String securityQuestion;
@@ -45,12 +45,18 @@ public class Account implements Comparable<Account> {
 		return accountID;
 	}
 
-	public Flight[] getFlights() {
-		return flights;
+	public Flight getFlights() {
+		
+		//should connect to database use a loop to return the flights in the table
+		
+		return flight;
 	}
 
-	public void setFlights(Flight[] flights) {
-		this.flights = flights;
+	public void setFlight(Flight flight) {
+		
+		//connects to database and adds the flight to the users account
+		
+		this.flight = flight;
 	}
 
 	public void setAccountID(String accountID) {

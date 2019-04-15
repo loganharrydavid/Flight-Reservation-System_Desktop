@@ -32,7 +32,7 @@ public class DatabaseObjectJJ {
 			
 			
 			String sqlQuery = 
-			" INSERT INTO Account(accountid)"
+			" INSERT INTO Account(username)"
 			+ " VALUES(?);";
 			
 			

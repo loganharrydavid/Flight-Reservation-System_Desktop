@@ -1,7 +1,6 @@
 package businessLogicLayer;
 
 
-import java.util.ArrayList;
 
 public class Flight implements Comparable<Flight> {
 	

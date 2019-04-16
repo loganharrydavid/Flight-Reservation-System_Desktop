@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.ArrayList;
 
 public class Account implements Comparable<Account> {
-	
+
 	private String accountID;
 	private String firstName;
 	private String lastName;
@@ -13,20 +13,19 @@ public class Account implements Comparable<Account> {
 	private String state;
 	private int zipCode;
 	private String ssn;
-	private ArrayList<Flight>flight;
+	private ArrayList<Flight> flight;
 	private String userName;
 	private String password;
 	private String securityQuestion;
 	private String securityAnswer;
-	
 
 	public Account() {
-		
+
 	}
 
-	public Account(String firstname, String lastName, String address, String email,
-			String State, int zipCode, String ssn, String userName, String password, String sq) {
-		
+	public Account(String firstname, String lastName, String address, String email, String State, int zipCode,
+			String ssn, String userName, String password, String sq) {
+
 		this.firstName = firstname;
 		this.lastName = lastName;
 		this.address = address;
@@ -40,17 +39,14 @@ public class Account implements Comparable<Account> {
 		this.securityAnswer = "default";
 
 	}
-	public static void generateAccount(String fname, String lname, String address,String email,
-			String state, int zip, String ssn, String un, String pword, String secQuestion) {
-			
-			
-			Account  acct = new Account(fname,lname,address,email,state, zip, ssn,un,pword,secQuestion);
-		
-			
-		}
 
-	
-	
+	public static void generateAccount(String fname, String lname, String address, String email, String state, int zip,
+			String ssn, String un, String pword, String secQuestion) {
+
+		Account acct = new Account(fname, lname, address, email, state, zip, ssn, un, pword, secQuestion);
+
+	}
+
 	public String getAccountID() {
 		return accountID;
 	}
@@ -87,7 +83,6 @@ public class Account implements Comparable<Account> {
 		this.email = email;
 	}
 
-
 	public String getState() {
 		return state;
 	}
@@ -111,7 +106,7 @@ public class Account implements Comparable<Account> {
 	public void setSsn(String ssn) {
 		this.ssn = ssn;
 	}
-	
+
 	public String getUserName() {
 		return userName;
 	}
@@ -120,21 +115,10 @@ public class Account implements Comparable<Account> {
 		this.userName = userName;
 	}
 
-
-	public String getPassword(String userAnswer, String securityAnswer) throws InputMismatchException {
+	public String getPassword() {
 		
-		try {
-			if(userAnswer.equalsIgnoreCase(this.securityAnswer)){
-				return this.password;
-			}else {
-					throw new InputMismatchException("Wrong answer");
-					}
-			
-		}
-			catch(InputMismatchException ex) {
-				return ex.getMessage();
-			}
-			
+		return password;
+
 	}
 
 	public void setPassword(String password) {
@@ -156,12 +140,11 @@ public class Account implements Comparable<Account> {
 	public void setSecurityAnswer(String securityAnswer) {
 		this.securityAnswer = securityAnswer;
 	}
-	
-	
+
 	@Override
 	public String toString() {
-		return "\nFirst name " + this.getFirstName() + "\nLast name " +
-	this.getLastName() + "\nUsername " + this.getUserName() +"\nAccount ID: " + getAccountID();
+		return "\nFirst name " + this.getFirstName() + "\nLast name " + this.getLastName() + "\nUsername "
+				+ this.getUserName() + "\nAccount ID: " + getAccountID();
 	}
 
 	@Override
@@ -171,7 +154,5 @@ public class Account implements Comparable<Account> {
 		} else
 			return -1;
 	}
-	
-
 
 }

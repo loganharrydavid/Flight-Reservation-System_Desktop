@@ -11,7 +11,7 @@ public class Flight implements Comparable<Flight> {
 	private String departTime;
 	private String arriveTime;
 	private String flightDate;
-	private ArrayList <Customer> passengers;
+	private ArrayList <Account> passengers;
 	private int numberOfSeats;
 	
 	public Flight() {
@@ -30,7 +30,22 @@ public class Flight implements Comparable<Flight> {
 		this.numberOfSeats = numberOfSeats;
 
 	}
+	
+	//public ArrayList<Account> getPassengers(Flight flight){
+		
+		//retrives a arraylist of the passenger accounts for the flight object
+		
+		
+//	return 
+			//}
 
+	public ArrayList<Account> getPassengers() {
+		return passengers;
+	}
+
+	public void setPassengers(ArrayList<Account> passengers) {
+		this.passengers = passengers;
+	}
 
 	public String getDepartureCity() {
 		return departureCity;

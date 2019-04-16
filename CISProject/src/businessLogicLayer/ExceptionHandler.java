@@ -1,17 +1,24 @@
 package businessLogicLayer;
 
-public class ExceptionHandler{
-	
-	 class SecurityQuestionException extends Exception{
-		
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
+import java.util.InputMismatchException;
 
-		public SecurityQuestionException(String message) {
-			super(message);
+public class ExceptionHandler extends Exception{
+	try {
+		if(userAnswer.equalsIgnoreCase(this.securityAnswer)){
+			return this.password;
+		}else {
+				throw new InputMismatchException("Wrong answer");
+				}
+		
+	}
+		catch(InputMismatchException ex) {
+			return ex.getMessage();
 		}
+	
+	
+	
+	
+	
 		
 		
 	}
@@ -19,4 +26,4 @@ public class ExceptionHandler{
 	 
 	
 
-}
+

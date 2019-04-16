@@ -13,7 +13,7 @@ public class Account implements Comparable<Account> {
 	private String state;
 	private int zipCode;
 	private String ssn;
-	private ArrayList<Flight> flight;
+	private ArrayList<Flight> flights;
 	private String userName;
 	private String password;
 	private String securityQuestion;
@@ -22,9 +22,13 @@ public class Account implements Comparable<Account> {
 	public Account() {
 
 	}
+	public Account(String username, String password) {
+		this.userName = username;
+		this.password = password;
+	}
 
 	public Account(String firstname, String lastName, String address, String email, String State, int zipCode,
-			String ssn, String userName, String password, String sq) {
+			String ssn, String userName, String password, String sq, String sa) {
 
 		this.firstName = firstname;
 		this.lastName = lastName;
@@ -36,14 +40,14 @@ public class Account implements Comparable<Account> {
 		this.userName = userName;
 		this.password = password;
 		this.securityQuestion = sq;
-		this.securityAnswer = "default";
+		this.securityAnswer = sa;
 
 	}
 
 	public static void generateAccount(String fname, String lname, String address, String email, String state, int zip,
-			String ssn, String un, String pword, String secQuestion) {
+			String ssn, String un, String pword, String secQuestion, String sa) {
 
-		Account acct = new Account(fname, lname, address, email, state, zip, ssn, un, pword, secQuestion);
+		Account acct = new Account(fname, lname, address, email, state, zip, ssn, un, pword, secQuestion, sa);
 		
 		DatabaseObjectJJ input = new DatabaseObjectJJ();
 		

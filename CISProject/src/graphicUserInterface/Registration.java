@@ -27,6 +27,7 @@ public class Registration extends Application {
 	Label confirmPasswords;
 	Label SSN;
 	Label SecurityQuestion;
+	Label SecurityAnswer;
 	TextField firstNameInput;
 	TextField lastNameInput;
 	TextField addressInput;
@@ -35,9 +36,10 @@ public class Registration extends Application {
 	TextField userNameInput;
 	TextField emailInput;
 	PasswordField passwordInput;
-	TextField confirmPasswordInput;
+	PasswordField confirmPasswordInput;
 	TextField SSNInput;
 	TextField SecurityQuestionInput;
+	TextField SecurityAnswerInput;
 	Button submitButton;
 	
 	public static void main(String[] args) {
@@ -103,8 +105,8 @@ public class Registration extends Application {
 		//Confirm Passwords
 		confirmPasswords = new Label(" Confrim Passwords: ");
 		GridPane.setConstraints(confirmPasswords, 1, 4);
-		confirmPasswordInput = new TextField();
-		confirmPasswordInput.setPromptText(" Enter Confirm Password ");
+		confirmPasswordInput = new PasswordField();
+		confirmPasswordInput.setPromptText(" EnterConfirm Password ");
 		GridPane.setConstraints(confirmPasswordInput, 1, 5);
 		
 		//Email
@@ -115,18 +117,25 @@ public class Registration extends Application {
 		GridPane.setConstraints(emailInput, 2, 1);
 		
 		// SSN
-		SSN = new Label(" Soical sercurity number: ");
+		SSN = new Label(" Soical security number: ");
 		GridPane.setConstraints(SSN, 1, 6);
 		SSNInput = new TextField();
 		SSNInput.setPromptText(" Enter SSN ");
 		GridPane.setConstraints(SSNInput, 1, 7 );
 		
 		// Security Question 
-		SecurityQuestion = new Label (" Sequrity Question ");
+		SecurityQuestion = new Label (" Security Question ");
 		GridPane.setConstraints(SecurityQuestion,1, 8);
 		SecurityQuestionInput = new TextField();
 		SecurityQuestionInput.setPromptText(" Favorite vication place ");
 		GridPane.setConstraints(SecurityQuestionInput, 1, 9);
+		
+		SecurityAnswer = new Label (" Security Answer ");
+		GridPane.setConstraints(SecurityAnswer,1, 10);
+		SecurityAnswerInput = new TextField();
+		SecurityAnswerInput.setPromptText(" Answer ");
+		GridPane.setConstraints(SecurityAnswerInput, 1, 11);
+		
 		
 		submitButton = new Button(" Submit Registration ");
 	    GridPane.setConstraints(submitButton, 0, 10);
@@ -137,7 +146,8 @@ public class Registration extends Application {
 				                  ,state, stateInput,username, userNameInput, 
 				                  passwords, passwordInput, confirmPasswords, 
 				                  confirmPasswordInput, SSN, SSNInput,
-				                  SecurityQuestion, SecurityQuestionInput,submitButton);
+				                  SecurityQuestion, SecurityQuestionInput,SecurityAnswer,
+				                  SecurityAnswerInput,submitButton);
 		
 		
 		
@@ -151,7 +161,7 @@ public class Registration extends Application {
 		Account.generateAccount(firstNameInput.getText(),lastNameInput.getText(),addressInput.getText(),
 					emailInput.getText(),stateInput.getText(),Integer.parseInt(zipCodeInput.getText()),
 					SSNInput.getText(), userNameInput.getText(), passwordInput.getText(), 
-					SecurityQuestionInput.getText());
+					SecurityQuestionInput.getText(),SecurityAnswerInput.getText());
 			 
 			MainMenu mainMenu =  new MainMenu();
 			

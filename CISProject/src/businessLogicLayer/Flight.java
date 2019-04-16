@@ -38,6 +38,9 @@ public class Flight implements Comparable<Flight> {
 		
 //	return 
 			//}
+	
+	//public void bookFlight(){	}
+
 
 	public ArrayList<Account> getPassengers() {
 		return passengers;
@@ -103,12 +106,6 @@ public class Flight implements Comparable<Flight> {
 		this.numberOfSeats = numberOfSeats;
 	}
 	
-	public void bookFlight(){
-		
-		java.util.Scanner input = new java.util.Scanner(System.in);
-		
-		
-	}
 
 	@Override
 	public String toString() {

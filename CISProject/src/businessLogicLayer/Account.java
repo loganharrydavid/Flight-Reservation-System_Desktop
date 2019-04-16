@@ -1,6 +1,7 @@
 package businessLogicLayer;
 
 import java.util.InputMismatchException;
+import java.util.ArrayList;
 
 public class Account implements Comparable<Account> {
 	
@@ -12,7 +13,7 @@ public class Account implements Comparable<Account> {
 	private String state;
 	private int zipCode;
 	private String ssn;
-	private Flight flight;
+	private ArrayList<Flight>flight;
 	private String userName;
 	private String password;
 	private String securityQuestion;
@@ -39,28 +40,19 @@ public class Account implements Comparable<Account> {
 		this.securityAnswer = "default";
 
 	}
+	public static void generateAccount(String fname, String lname, String address,String email,
+			String state, int zip, String ssn, String un, String pword, String secQuestion) {
+			
+			
+			Account  acct = new Account(fname,lname,address,email,state, zip, ssn,un,pword,secQuestion);
+		
+			
+		}
+
 	
 	
 	public String getAccountID() {
 		return accountID;
-	}
-
-	public Flight getFlights() {
-		
-		//should connect to database use a loop to return the flights in the table
-		
-		return flight;
-	}
-
-	public void setFlight(Flight flight) {
-		
-		//connects to database and adds the flight to the users account
-		
-		this.flight = flight;
-	}
-
-	public void setAccountID(String accountID) {
-		this.accountID = accountID;
 	}
 
 	public String getFirstName() {
@@ -127,11 +119,7 @@ public class Account implements Comparable<Account> {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
-	
-/* getPassword and setPassword will require input of answer to security question
- * to return the password and/or set a new one
- */
+
 
 	public String getPassword(String userAnswer, String securityAnswer) throws InputMismatchException {
 		
@@ -168,15 +156,7 @@ public class Account implements Comparable<Account> {
 	public void setSecurityAnswer(String securityAnswer) {
 		this.securityAnswer = securityAnswer;
 	}
-	public static void generateAccount(String fname, String lname, String address,String email,
-		String state, int zip, String ssn, String un, String pword, String secQuestion) {
-		
-		
-		Account  acct1 = new Account(fname,lname,address,email,state, zip, ssn,un,pword,secQuestion);
-		
-		System.out.println(acct1.toString());	
-	}
-
+	
 	
 	@Override
 	public String toString() {

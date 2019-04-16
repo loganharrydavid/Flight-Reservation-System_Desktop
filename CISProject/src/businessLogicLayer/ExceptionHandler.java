@@ -1,6 +1,6 @@
 package businessLogicLayer;
 
-public class programExceptions {
+public class ExceptionHandler{
 	
 	 class SecurityQuestionException extends Exception{
 		

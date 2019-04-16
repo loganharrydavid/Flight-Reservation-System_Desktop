@@ -1,6 +1,6 @@
 package businessLogicLayer;
 
-import java.util.InputMismatchException;
+import databaseInterfaceLayer.DatabaseObjectJJ;
 import java.util.ArrayList;
 
 public class Account implements Comparable<Account> {
@@ -44,6 +44,10 @@ public class Account implements Comparable<Account> {
 			String ssn, String un, String pword, String secQuestion) {
 
 		Account acct = new Account(fname, lname, address, email, state, zip, ssn, un, pword, secQuestion);
+		
+		DatabaseObjectJJ input = new DatabaseObjectJJ();
+		
+		input.setAccountValues(acct);
 
 	}
 

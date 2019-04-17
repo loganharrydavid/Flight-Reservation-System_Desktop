@@ -31,17 +31,6 @@ public class Flight implements Comparable<Flight> {
 
 	}
 	
-	//public ArrayList<Account> getPassengers(Flight flight){
-		
-		//retrives a arraylist of the passenger accounts for the flight object
-		
-		
-//	return 
-			//}
-	
-	//public void bookFlight(){	}
-
-
 	public ArrayList<Account> getPassengers() {
 		return passengers;
 	}

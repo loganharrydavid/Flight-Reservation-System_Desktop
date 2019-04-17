@@ -12,9 +12,6 @@ public class DatabaseObjectJJ {
 	static String databaseUsername = "root";
 	static String databasePassword = "redwall12";
 
-	
-	
-
 	public void setAccountValues(Account acc) {
 
 		try {
@@ -66,5 +63,4 @@ public class DatabaseObjectJJ {
 		}
 
 	}
-
 }

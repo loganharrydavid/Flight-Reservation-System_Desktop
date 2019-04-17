@@ -2,6 +2,7 @@ package businessLogicLayer;
 
 import databaseInterfaceLayer.DatabaseObjectJJ;
 import java.util.ArrayList;
+import businessLogicLayer.DuplicateAccountException;
 
 public class Account implements Comparable<Account> {
 
@@ -45,15 +46,24 @@ public class Account implements Comparable<Account> {
 	}
 
 	public static void generateAccount(String fname, String lname, String address, String email, String state, int zip,
-			String ssn, String un, String pword, String secQuestion, String sa) {
-
+			String ssn, String un, String pword, String secQuestion, String sa){
+			
 		Account acct = new Account(fname, lname, address, email, state, zip, ssn, un, pword, secQuestion, sa);
-		
+			
 		DatabaseObjectJJ input = new DatabaseObjectJJ();
 		
+		try {
+		//perform method to check if account already exists in database
 		input.setAccountValues(acct);
-
-	}
+		
+		}
+		catch(DuplicateAccountException ex) {
+			
+		}
+		
+			
+		}
+	
 
 	public String getAccountID() {
 		return accountID;
@@ -157,7 +167,7 @@ public class Account implements Comparable<Account> {
 
 	@Override
 	public int compareTo(Account a) {
-		if (accountID == a.accountID) {
+		if (ssn == a.ssn) {
 			return 0;
 		} else
 			return -1;

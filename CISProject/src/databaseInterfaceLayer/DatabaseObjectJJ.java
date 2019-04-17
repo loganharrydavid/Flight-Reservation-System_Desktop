@@ -1,7 +1,7 @@
 package databaseInterfaceLayer;
 
 import java.sql.*;
-import businessLogicLayer.Account;
+import businessLogicLayer.*;
 
 
 public class DatabaseObjectJJ {
@@ -11,20 +11,24 @@ public class DatabaseObjectJJ {
 	static final String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB?verifyServerCertificate=false&useSSL=false";
 	static final String databaseUsername = "root";
 	static final String databasePassword = "redwall12";
+	static Connection connection;
+	
+	public DatabaseObjectJJ() {
+		
+	}
 
-	public void setAccountValues(Account acc) {
+	public void setNewAccountValues(Account acc) {
 
 		try {
-			// driver location
-			Class.forName("java.sql.Driver");
-
-			// this creates the connection to the database
-			Connection connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
-
+		
+				 Class.forName("java.sql.Driver");
+			
 			System.out.println("databse connected! ");
+			
+			connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
 
 			String sqlQuery = " INSERT INTO account(username,password,firstname,lastname,address,state,email,zipcode,ssn,security_q,security_a)"
-					+ " VALUES(?,?,?,?,?,?,?,?,?,?);";
+					+ " VALUES(?,?,?,?,?,?,?,?,?,?,?);";
 
 			// the prepared statement is more efficient to execute the same or similar
 			// database statement repeatedly

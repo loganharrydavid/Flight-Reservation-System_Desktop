@@ -12,7 +12,7 @@ public class Account implements Comparable<Account> {
 	private String address;
 	private String email;
 	private String state;
-	private int zipCode;
+	private Integer zipCode;
 	private String ssn;
 	private ArrayList<Flight> flights;
 	private String userName;
@@ -21,11 +21,6 @@ public class Account implements Comparable<Account> {
 	private String securityAnswer;
 
 	public Account() {
-
-	}
-	public Account(String username, String password) {
-		this.userName = username;
-		this.password = password;
 	}
 
 	public Account(String firstname, String lastName, String address, String email, String State, int zipCode,
@@ -53,7 +48,8 @@ public class Account implements Comparable<Account> {
 		DatabaseObjectJJ input = new DatabaseObjectJJ();
 		
 		//perform method to check if account already exists in database
-		input.setAccountValues(acct);
+		input.setNewAccountValues(acct);
+		
 		}
 	
 

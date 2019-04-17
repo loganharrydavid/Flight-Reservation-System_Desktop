@@ -30,7 +30,7 @@ public class Login extends Application {
 	}
 	
 	     
-		@Override
+	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		
@@ -68,7 +68,12 @@ public class Login extends Application {
 	
 	
 	SignUpButton.setOnAction(e->{
+		
+		
+		
 		Registration reg = new Registration();
+		
+		
 		try {
 			reg.start(primaryStage);
 		} catch (Exception e1) {

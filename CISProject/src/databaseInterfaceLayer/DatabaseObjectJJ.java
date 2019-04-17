@@ -5,9 +5,10 @@ import java.sql.*;
 public class DatabaseObjectJJ {
 	
 	//location of database //set verify certificate to false to not use SSL to get rid of the verification error
-	static String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB?verifyServerCertificate=false&useSSL=false";
-	static String databaseUsername ="root";
-	static String databasePassword = "Redwall12";
+	
+	String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB"; //?verifyServerCertificate=false&useSSL=false";
+	String databaseUsername = "root";
+	String databasePassword = "Redwall12";
 	
 	
 	public static void main(String[] args) {
@@ -28,12 +29,13 @@ public class DatabaseObjectJJ {
 			//this creates the connection to the database 
 			Connection connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
 			
-			System.out.println("databse connected! ");
+			//System.out.println("database connected! ");
 			
 			
 			String sqlQuery = 
-			" INSERT INTO Account(username)"
-			+ " VALUES(?);";
+			" INSERT INTO Account "
+			+ " "		
+			+ " VALUES(?);" ;
 			
 			
 			//the prepared statement is more efficient to execute the same or similar database statement repeatedly

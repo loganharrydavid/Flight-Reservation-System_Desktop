@@ -4,18 +4,12 @@ package businessLogicLayer;
 public class ExceptionHandler extends Exception{
 	
 	private static final long serialVersionUID = 1L;
-	public String Error;
-	
-	public ExceptionHandler() {
-		
-	}
 	
 	
 	public ExceptionHandler(String message) {
-	
 		super(message);
-		
-	}	
+	}
+
 		}
 
 	class LoginException extends ExceptionHandler{
@@ -23,33 +17,30 @@ public class ExceptionHandler extends Exception{
 	
 		private static final long serialVersionUID = 1L;
 
-		public LoginException(String Error) {
+		public LoginException(String message) {
 			
-			this.Error = "Something is wrong with the Username or Password";
+			super(message);
 			
 		}
-		
-		public String getError() {
-			return this.Error;
-		}
+	
 		
 	}
 	class DuplicateFlightException extends ExceptionHandler{
 		
 		private static final long serialVersionUID = 1L;
 
-		public DuplicateFlightException() {
+		public DuplicateFlightException(String message) {
 			
-			this.Error = "You are trying to book a duplicate flight";
+			super(message);
 		}
 	}
 	class DuplicateAccountException extends ExceptionHandler {
 		
 		private static final long serialVersionUID = 1L;
 
-		public DuplicateAccountException() {
+		public DuplicateAccountException(String message) {
 			
-			this.Error = "It appears you are trying to create a duplicate account";
+			super(message);
 			
 		}
 		
@@ -58,9 +49,9 @@ public class ExceptionHandler extends Exception{
 		
 		private static final long serialVersionUID = 1L;
 
-		public SSNException() {
+		public SSNException(String message) {
 			
-			this.Error = "Social security number should be in the format: 123456789";
+			super(message);
 		}
 	}
 	
@@ -68,9 +59,9 @@ public class ExceptionHandler extends Exception{
 	
 		private static final long serialVersionUID = 1L;
 
-		public EmailException() {
+		public EmailException(String message) {
 			
-			this.Error = "Email should be in the format: Blank@email.com";
+			super(message);
 		}
 		
 	}
@@ -78,52 +69,52 @@ public class ExceptionHandler extends Exception{
 	
 		private static final long serialVersionUID = 1L;
 
-		public PasswordException() {
+		public PasswordException(String message) {
 		
-			this.Error = "Password entered was incorrect, please try again";
+			super(message);
 		}
 	}
 	class UserNameException extends ExceptionHandler{
 		
 		private static final long serialVersionUID = 1L;
 
-		public UserNameException() {
+		public UserNameException(String message) {
 			
-		this.Error = "The username you entered does not exist";
+		super(message);
 		}
 	}
 	class NameFormatException extends ExceptionHandler{
 	
 		private static final long serialVersionUID = 1L;
 
-		public NameFormatException() {
+		public NameFormatException(String message) {
 			
-			this.Error = "Invalid character detected in first or last name";
+			super(message);
 		}
 	}
 	class AddressException extends ExceptionHandler{
 	
 		private static final long serialVersionUID = 1L;
 
-		public AddressException() {
-			this.Error = "Address must only consist of letters and numbers";
+		public AddressException(String message) {
+			super(message);
 		}
 	}
 	class StateException extends ExceptionHandler{
 		
 		private static final long serialVersionUID = 1L;
 
-		public StateException() {
+		public StateException(String message) {
 			
-			this.Error = "State format should be two uppercase letters";
+			super(message);
 		}
 	}
 	class ZipcodeException extends ExceptionHandler{
 		
 		private static final long serialVersionUID = 1L;
 
-		public ZipcodeException() {
+		public ZipcodeException(String message) {
 			
-			this.Error = "Zipcode should be in the format: 12345";
+			super(message);
 		}
 	}

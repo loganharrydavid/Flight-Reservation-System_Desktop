@@ -1,8 +1,8 @@
 package businessLogicLayer;
 
 import java.sql.DriverManager;
-
 import databaseInterfaceLayer.DatabaseObjectJJ;
+
 
 public class loginObject{
 
@@ -22,10 +22,16 @@ public class loginObject{
 	
 	public void executeLogin() {
 		
-		DatabaseObjectJJ log = new DatabaseObjectJJ();
 		
 		
 		
+		
+	}
+	public String getUsername() {
+		return username;
+	}
+	public String getPassword() {
+		return password;
 	}
 	
 	

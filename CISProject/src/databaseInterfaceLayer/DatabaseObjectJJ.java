@@ -8,9 +8,9 @@ public class DatabaseObjectJJ {
 
 	// location of database //set verify certificate to false to not use SSL to get
 	// rid of the verification error
-	static String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB?verifyServerCertificate=false&useSSL=false";
-	static String databaseUsername = "root";
-	static String databasePassword = "redwall12";
+	static final String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB?verifyServerCertificate=false&useSSL=false";
+	static final String databaseUsername = "root";
+	static final String databasePassword = "redwall12";
 
 	public void setAccountValues(Account acc) {
 

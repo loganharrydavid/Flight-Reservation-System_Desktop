@@ -52,16 +52,8 @@ public class Account implements Comparable<Account> {
 			
 		DatabaseObjectJJ input = new DatabaseObjectJJ();
 		
-		try {
 		//perform method to check if account already exists in database
 		input.setAccountValues(acct);
-		
-		}
-		catch(DuplicateAccountException ex) {
-			
-		}
-		
-			
 		}
 	
 

@@ -24,21 +24,23 @@ public class LoginDBO {
 					
 			PreparedStatement preparedStatement= connection.prepareStatement(sqlQuery);
 
-			ResultSet res = preparedStatement.executeQuery();
+			ResultSet res = preparedStatement.executeQuery(sqlQuery); 
 			
-			String pass = "";
+			String pw = "";
+			while(res.next()) {
 			
-			if(res.next()) {
-			pass = res.getString("password");
+			pw = res.getString("password");
+			
 			}
+			System.out.println(pw);
 			
 
 			connection.close();
 
-			return pass;
+			return pw;
 
 		} catch (Exception ex) {
-			return "Please check that your Username is correct";
+			return "Something went wrong with the database :(";
 		
 		} 
 			

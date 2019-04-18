@@ -1,4 +1,5 @@
-package businessLogicLayer;
+package databaseInterfaceLayer;
+
 
 
 public class ExceptionHandler extends Exception{
@@ -65,15 +66,8 @@ public class ExceptionHandler extends Exception{
 		}
 		
 	}
-	class PasswordException extends ExceptionHandler{
 	
-		private static final long serialVersionUID = 1L;
-
-		public PasswordException(String message) {
-		
-			super(message);
-		}
-	}
+	
 	 class UserNameException extends ExceptionHandler{
 		
 		private static final long serialVersionUID = 1L;

@@ -1,7 +1,7 @@
 package businessLogicLayer;
 
-import java.sql.DriverManager;
-import databaseInterfaceLayer.DatabaseObjectJJ;
+
+import databaseInterfaceLayer.LoginDBO;
 
 
 public class loginObject{
@@ -22,9 +22,16 @@ public class loginObject{
 	
 	public void executeLogin() {
 		
+	
 		
 		
-		
+		try {
+			checkLogin(this.getUsername(),this.getPassword());
+		}
+		catch(PasswordException ex) {
+			System.out.println("The password you enter is incorrect");
+			
+		}
 		
 	}
 	public String getUsername() {
@@ -32,6 +39,12 @@ public class loginObject{
 	}
 	public String getPassword() {
 		return password;
+	}
+	public void checkLogin(String username, String pword) throws PasswordException {
+		
+			if(this.password != pword) {
+				throw new PasswordException("The password you entered is incorrect");
+		}
 	}
 	
 	

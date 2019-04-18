@@ -1,4 +1,4 @@
-package businessLogicLayer;
+package graphicUserInterface;
 
 
 public class ExceptionHandler extends Exception{

@@ -1,8 +1,6 @@
 package databaseInterfaceLayer;
 
 import java.sql.*;
-import businessLogicLayer.*;
-
 
 
 public class LoginDBO {
@@ -12,7 +10,7 @@ public class LoginDBO {
 	static final String databasePassword = "redwall12";
 	static Connection connection;
 
-	public void loginConn(loginObject log) {
+	public String loginConn(String username) {
 
 		try {
 		
@@ -22,36 +20,34 @@ public class LoginDBO {
 			
 			connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
 
-			String sqlQuery = " SELECT * FROM account(username,password)";
+			String sqlQuery = " SELECT * FROM account WHERE username =" + username;
 					
 			PreparedStatement preparedStatement= connection.prepareStatement(sqlQuery);
 
 			ResultSet res = preparedStatement.executeQuery();
 			
+			String pass = "";
 			
-
-			preparedStatement.executeUpdate();
+			if(res.next()) {
+				
+			pass += res.getString("password");
+			
+			}
+			
 
 			connection.close();
 
-			// execute the query
-			// ResultSet rSet = preparedStatement.executeQuery();
+			return pass;
 
-//			//look through database
-//			while (rSet.next()) {
-//				
-//				//do whatever
-//				
-//				
-//			}
-
-		} catch (Exception e) {
-			System.out.println("something messed up in database! :-(");
-			e.printStackTrace();
+		} catch (Exception ex) {
+			return "Please check that your Username is correct";
+		
+		} 
+			
 		}
-
+		
 	}
-}
+
 
 
 

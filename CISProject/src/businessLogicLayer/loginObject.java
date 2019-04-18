@@ -4,6 +4,7 @@ package businessLogicLayer;
 import databaseInterfaceLayer.LoginDBO;
 
 
+
 public class loginObject{
 
 	private String username;
@@ -22,11 +23,13 @@ public class loginObject{
 	
 	public void executeLogin() {
 		
-	
+		LoginDBO log = new LoginDBO();
+		
+		String pword = log.loginConn(this.getUsername());
 		
 		
 		try {
-			checkLogin(this.getUsername(),this.getPassword());
+			checkLogin(pword);
 		}
 		catch(PasswordException ex) {
 			System.out.println("The password you enter is incorrect");
@@ -40,7 +43,7 @@ public class loginObject{
 	public String getPassword() {
 		return password;
 	}
-	public void checkLogin(String username, String pword) throws PasswordException {
+	public void checkLogin(String pword) throws PasswordException {
 		
 			if(this.password != pword) {
 				throw new PasswordException("The password you entered is incorrect");

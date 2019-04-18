@@ -29,9 +29,7 @@ public class LoginDBO {
 			String pass = "";
 			
 			if(res.next()) {
-				
-			pass += res.getString("password");
-			
+			pass = res.getString("password");
 			}
 			
 

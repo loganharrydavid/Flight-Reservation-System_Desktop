@@ -1,6 +1,6 @@
 package graphicUserInterface;
 
-
+import businessLogicLayer.loginObject;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -66,14 +66,28 @@ public class Login extends Application {
 	primaryStage.setScene(scene);
 	primaryStage.show();
 	
+	loginButton.setOnAction(e ->{
+		
+		loginObject login = new loginObject(username.getText(),password.getText());
+		
+		login.executeLogin();
+		
+		MainMenu nextScreen = new MainMenu();
+		
+		try {
+			nextScreen.start(primaryStage);
+		} catch (Exception ex) {
+				ex.printStackTrace();
+			
+		}
+		
+	});
+	
 	
 	SignUpButton.setOnAction(e->{
 		
-		
-		
 		Registration reg = new Registration();
-		
-		
+	
 		try {
 			reg.start(primaryStage);
 		} catch (Exception e1) {

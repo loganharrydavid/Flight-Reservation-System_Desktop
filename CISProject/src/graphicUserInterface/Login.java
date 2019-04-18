@@ -66,23 +66,19 @@ public class Login extends Application {
 	primaryStage.setScene(scene);
 	primaryStage.show();
 	
-	loginButton.setOnAction(e ->{
+	loginButton.setOnAction(e->{
 
-		loginObject login = new loginObject(username.getText(),password.getText());
-			
-			if(login.executeLogin() == true) {
+		loginObject login = new loginObject(usernameInput.getText(),passwordInput.getText());
+		
+		if(login.executeLogin() == true) {
 				try {
 					MainMenu nextScreen = new MainMenu();
 					nextScreen.start(primaryStage);
 				} catch (Exception ex) {
 						ex.printStackTrace();	
 				}
-			}
-			else {
-				//Display incorrect login window here
-				System.out.println("booo");
-			}
-	});
+			
+		}});
 	
 	
 	SignUpButton.setOnAction(e->{

@@ -9,9 +9,12 @@ public class LoginDBO {
 	static final String databaseUsername = "root";
 	static final String databasePassword = "redwall12";
 	static Connection connection;
-
+	
+	
 	public String loginConn(String username) {
-
+		
+		String result = "";
+		
 		try {
 		
 			Class.forName("java.sql.Driver");
@@ -19,30 +22,29 @@ public class LoginDBO {
 			System.out.println("databse connected! ");
 			
 			connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
-
-			String sqlQuery = " SELECT * FROM account WHERE username =" + username;
-					
-			PreparedStatement preparedStatement= connection.prepareStatement(sqlQuery);
-
-			ResultSet res = preparedStatement.executeQuery(sqlQuery); 
+									
+			PreparedStatement preparedStatement=
+					connection.prepareStatement("SELECT * FROM account WHERE username=" + "'" + username + "'");
 			
-			String pw = "";
-			while(res.next()) {
 			
-			pw = res.getString("password");
+			ResultSet res = preparedStatement.executeQuery(); 
+			
+			if(res.next()) {
+				
+			result = res.getString("password");
+			
 			
 			}
-			System.out.println(pw);
 			
-
-			connection.close();
-
-			return pw;
-
+			
+			connection.close();	
+			
 		} catch (Exception ex) {
-			return "Something went wrong with the database :(";
+			System.out.println("Something went wrong with the database :(");
 		
 		} 
+		return result;
+		
 			
 		}
 		

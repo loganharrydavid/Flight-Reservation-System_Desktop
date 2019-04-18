@@ -9,7 +9,7 @@ public class loginObject{
 
 	private String username;
 	private String password;
-	public Boolean loginCheck = false;
+	private Boolean loginCheck;
 
 	public loginObject() {
 
@@ -18,44 +18,42 @@ public class loginObject{
 		
 		this.username = userName;
 		this.password = Pword;
-		
+		this.loginCheck = false;
 	}
 	
 	public Boolean executeLogin() {
 		
 		LoginDBO log = new LoginDBO();
 		
-		String pword = log.loginConn(getUsername());
-		
+		String check = log.loginConn(getUsername());
 		try {
-			checkPassword(pword);
+		checkPassword(check);
 		}
 		catch(PasswordException ex) {
-			System.out.println("The password you enter is incorrect");
-			
+			System.out.println("password issue");
 		}
-		return loginCheck;
+		
+		return loginCheck;		
 	}
+	
+	
 	public String getUsername() {
-		return this.username;
+		return username;
 	}
 	public String getPassword() {
-		return this.password;
+		return password;
 	}
-	public void checkPassword(String pword) throws PasswordException {
+	public Boolean getLoginCheck() {
+		return loginCheck;
+	}
+	public void setLoginCheck(Boolean loginCheck) {
+		this.loginCheck = loginCheck;
+	}
+	public void checkPassword(String pword) throws PasswordException{
 		
-			if(getPassword() == pword) {
-				loginCheck = true;
-				}
-				else {
-				throw new PasswordException("Wrong Password");	
-		}
-	}
-	
-	
-	
-	
-}
-
-
-
+			if(pword == this.getPassword()) {
+				setLoginCheck(true);
+				}			
+			
+			}
+			}

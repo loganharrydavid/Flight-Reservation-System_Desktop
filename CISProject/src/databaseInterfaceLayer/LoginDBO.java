@@ -43,9 +43,9 @@ public class LoginDBO {
 
 	}
 
-	public String searchFor(String thing) {
+	public int searchFor(String email) {
 		
-		String result = "";
+		 int i = 0;
 
 		try {
 
@@ -56,23 +56,23 @@ public class LoginDBO {
 			connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
 
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("SELECT * FROM account WHERE ssn=" + "'" + thing + "'");
+					.prepareStatement("SELECT * FROM account WHERE email=" + "'" + email + "'");
 
 			ResultSet res = preparedStatement.executeQuery();
 
-			if (res.next()) {
+			 while(res.next()) {
 
-				result = res.getString("password");
-
+				i = res.getInt("ssn");
+			
 			}
-			
-			
-			connection.close();
-			
-			return "exists";
+			 
+		connection.close();
 			
 		} catch (Exception ex) {
 			
-			return "";}
-	}}
-
+			ex.printStackTrace();
+			return 0;
+	}
+		return i;
+}
+	}

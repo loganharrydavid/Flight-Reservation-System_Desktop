@@ -1,8 +1,7 @@
 package graphicUserInterface;
 
-
-import businessLogicLayer.Account;
 import businessLogicLayer.Account.*;
+import businessLogicLayer.Account;
 import databaseInterfaceLayer.LoginDBO;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -160,45 +159,34 @@ public class Registration extends Application {
 		
 		submitButton.setOnAction(e->{
 			
-		try {	
-			
-		checkForDuplicate(SSNInput.getText());
-		
-		Account.generateAccount(firstNameInput.getText(),lastNameInput.getText(),addressInput.getText(),
+		try {
+				Account.generateAccount(firstNameInput.getText(),lastNameInput.getText(),addressInput.getText(),
 				emailInput.getText(),stateInput.getText(),Integer.parseInt(zipCodeInput.getText()),
-				SSNInput.getText(), userNameInput.getText(), passwordInput.getText(), 
+				Integer.parseInt(SSNInput.getText()), userNameInput.getText(), passwordInput.getText(), 
 				SecurityQuestionInput.getText(),SecurityAnswerInput.getText());
-		 
-		MainMenu mainMenu =  new MainMenu();
-		 
-		 try {
-				mainMenu.start(primaryStage);
-			} catch (Exception e1) {
 				
-				e1.printStackTrace();
-			}
-		
+				MainMenu mainMenu = new MainMenu();
+				 
+				 try {
+					 mainMenu.start(primaryStage);
+					} catch (Exception e1) {
+						
+						e1.printStackTrace();
+					}
+				
+			
 		}catch(Exception ex) {
-			System.out.println("Account already exists");
-			}
-		
+			System.out.println("An account with this email address already exists");
+		}
+			
+			
+
 		});
 		
 		
 	
 	}
-	public void checkForDuplicate(String ssn){
-
-		LoginDBO searcher = new LoginDBO();
-		
-			String whatSearch = searcher.searchFor(ssn);
-			if (whatSearch == "exists") {
-				throw new Exception("Account Exists");
-			}
-
-
-	}
-	
-	
-
 }
+
+	
+

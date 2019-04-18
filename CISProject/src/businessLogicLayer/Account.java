@@ -1,7 +1,6 @@
 package businessLogicLayer;
 
 import databaseInterfaceLayer.DatabaseObjectJJ;
-import databaseInterfaceLayer.LoginDBO;
 import java.util.ArrayList;
 import businessLogicLayer.DuplicateAccountException;
 
@@ -14,7 +13,7 @@ public class Account implements Comparable<Account> {
 	private String email;
 	private String state;
 	private Integer zipCode;
-	private String ssn;
+	private int ssn;
 	private ArrayList<Flight> flights;
 	private String userName;
 	private String password;
@@ -26,7 +25,7 @@ public class Account implements Comparable<Account> {
 	}
 
 	public Account(String firstname, String lastName, String address, String email, String State, int zipCode,
-			String ssn, String userName, String password, String sq, String sa) {
+			int ssn, String userName, String password, String sq, String sa) {
 
 		this.firstName = firstname;
 		this.lastName = lastName;
@@ -43,16 +42,38 @@ public class Account implements Comparable<Account> {
 	}
 
 	public static void generateAccount(String fname, String lname, String address, String email, String state, int zip,
-			String ssn, String un, String pword, String secQuestion, String sa) {
-
-		Account acct = new Account(fname, lname, address, email, state, zip, ssn, un, pword, secQuestion, sa);
-
-		DatabaseObjectJJ input = new DatabaseObjectJJ();
+			int ssn, String un, String pword, String secQuestion, String sa) throws DuplicateAccountException {
+	
+			Boolean isDuplicate;
+			
+			Account acct = new Account(fname, lname, address, email, state, zip, ssn, un, pword, secQuestion, sa);
+			
+			databaseInterfaceLayer.LoginDBO search = new databaseInterfaceLayer.LoginDBO();
 		
-		input.setNewAccountValues(acct);
+			
+			int find = search.searchFor(acct.getEmail());
+			
+			if(find == acct.getSsn()) {
+				isDuplicate = true;
+				throw new DuplicateAccountException("An account with this email address already exists");
+				
+			}else {
+				isDuplicate = false;
+			}
+			
+			if(!isDuplicate) {
+				
+				DatabaseObjectJJ input = new DatabaseObjectJJ();
+				
+				input.setNewAccountValues(acct);
+				
+				
+			}
+		
+		
+		
 	}
-
-
+	
 	public String getAccountID() {
 		return accountID;
 	}
@@ -105,11 +126,11 @@ public class Account implements Comparable<Account> {
 		this.zipCode = zipCode;
 	}
 
-	public String getSsn() {
+	public Integer getSsn() {
 		return ssn;
 	}
 
-	public void setSsn(String ssn) {
+	public void setSsn(Integer ssn) {
 		this.ssn = ssn;
 	}
 

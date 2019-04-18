@@ -34,7 +34,7 @@ public class ExceptionHandler extends Exception{
 			super(message);
 		}
 	}
-	class DuplicateAccountException extends ExceptionHandler {
+	class DuplicateAccountException extends RuntimeException {
 		
 		private static final long serialVersionUID = 1L;
 

@@ -42,7 +42,7 @@ public class DatabaseObjectJJ {
 			preparedStatement.setString(6, acc.getState());
 			preparedStatement.setString(7, acc.getEmail());
 			preparedStatement.setInt(8, acc.getZipCode());
-			preparedStatement.setString(9, acc.getSsn());
+			preparedStatement.setInt(9, acc.getSsn());
 			preparedStatement.setString(10, acc.getSecurityQuestion());
 			preparedStatement.setString(11, acc.getSecurityAnswer());
 

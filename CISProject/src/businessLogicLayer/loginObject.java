@@ -5,7 +5,7 @@ import databaseInterfaceLayer.LoginDBO;
 
 
 
-public class loginObject{
+public class loginObject {
 
 	private String username;
 	private String password;
@@ -49,11 +49,14 @@ public class loginObject{
 	public void setLoginCheck(Boolean loginCheck) {
 		this.loginCheck = loginCheck;
 	}
-	public void checkPassword(String pword) throws PasswordException{
+	public void checkPassword(String check) throws PasswordException{
 		
-			if(pword == this.getPassword()) {
+			if(this.getPassword().equals(check)) {
 				setLoginCheck(true);
-				}			
+				}		
+			else {
+				throw new PasswordException("Something");
+			}
 			
 			}
 			}

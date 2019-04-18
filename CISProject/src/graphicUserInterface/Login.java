@@ -66,20 +66,7 @@ public class Login extends Application {
 	primaryStage.setScene(scene);
 	primaryStage.show();
 	
-	loginButton.setOnAction(e->{
 
-		loginObject login = new loginObject(usernameInput.getText(),passwordInput.getText());
-		
-		if(login.executeLogin() == true) {
-				try {
-					MainMenu nextScreen = new MainMenu();
-					nextScreen.start(primaryStage);
-				} catch (Exception ex) {
-						ex.printStackTrace();	
-				}
-			
-		}});
-	
 	
 	SignUpButton.setOnAction(e->{
 		
@@ -93,7 +80,19 @@ public class Login extends Application {
 		}
 	});
 	
-	
+	loginButton.setOnAction(e->{
+
+		loginObject login = new loginObject(usernameInput.getText(),passwordInput.getText());
+		
+		if(login.executeLogin() == true) {
+				try {
+					MainMenu nextScreen = new MainMenu();
+					nextScreen.start(primaryStage);
+				} catch (Exception ex) {
+						ex.printStackTrace();	
+				}
+			
+		}});
 	
 	}
     

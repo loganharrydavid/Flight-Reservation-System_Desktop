@@ -6,5 +6,7 @@ public class Admin extends Account{
 		super();
 		is_Admin = true;
 	}
-	
+	public void setFlight(Flight flight) {
+		
+	}
 }

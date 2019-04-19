@@ -1,9 +1,10 @@
 package businessLogicLayer;
 
 import databaseInterfaceLayer.DatabaseObjectJJ;
+
+import java.security.InvalidKeyException;
 import java.util.ArrayList;
-import businessLogicLayer.DuplicateAccountException;
-import databaseInterfaceLayer.LoginDBO;
+import databaseInterfaceLayer.*;
 
 public class Account implements Comparable<Account> {
 
@@ -15,7 +16,7 @@ public class Account implements Comparable<Account> {
 	private String state;
 	private int zipCode;
 	private int ssn;
-	private ArrayList<Flight> flights;
+	private ArrayList<Flight> flights = new ArrayList<>();
 	private String userName;
 	private String password;
 	private String securityQuestion;
@@ -78,12 +79,28 @@ public class Account implements Comparable<Account> {
 
 	}
 	
-	public void getFlights(String username) {
+	public String[] getFlights() {
 		
-		//Login to the database and add all of the flights 
-		//that correspond to this username to the ArrayList<Flights> for this account object
+		String[]a = new String[this.flights.size()];
 		
+		for(int i = 0; i < this.flights.size(); i++) {
+			
+			a[i] += this.flights.get(i);}
+			
+			return a;
+	}
+	
+	public String getPassword() {
 		
+		String secureAnswer = "";   //databaseObject.method(toReturn correct Answer)
+		try {
+			if(this.securityAnswer != secureAnswer)
+				throw new InvalidKeyException("Incorrect answer to security question");
+		}catch(InvalidKeyException ex) {
+			ex.getMessage();
+			
+		}
+		return password;
 	}
 	
 	public String getAccountID() {
@@ -117,16 +134,12 @@ public class Account implements Comparable<Account> {
 		return zipCode;
 	}
 
-	public Integer getSsn() {
+	public int getSsn() {
 		return ssn;
 	}
 
 	public String getUserName() {
 		return userName;
-	}
-
-	public String getPassword() {
-		return password;
 	}
 
 	public String getSecurityQuestion() {

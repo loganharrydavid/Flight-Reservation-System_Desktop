@@ -68,7 +68,7 @@ public class LoginDBO {
 			 
 		connection.close();
 			
-		} catch (Exception ex) {
+		} catch (SQLException|ClassNotFoundException ex) {
 			
 			ex.printStackTrace();
 			return 0;

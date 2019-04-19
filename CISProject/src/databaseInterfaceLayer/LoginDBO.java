@@ -34,9 +34,9 @@ public class LoginDBO {
 
 			connection.close();
 
-		} catch (Exception ex) {
+		} catch (SQLException|ClassNotFoundException ex) {
 			System.out.println("Something went wrong with the database :(");
-			
+			ex.printStackTrace();
 
 		}
 		return result;

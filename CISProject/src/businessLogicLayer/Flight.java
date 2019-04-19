@@ -85,7 +85,8 @@ public class Flight implements Comparable<Flight> {
 
 	public void setFlightNumber(int flightNumber) {
 		this.flightNumber = flightNumber;
-	}
+		
+		}
 
 	public int getNumberOfSeats() {
 		return numberOfSeats;

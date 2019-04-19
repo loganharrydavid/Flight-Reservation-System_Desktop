@@ -3,6 +3,7 @@ package businessLogicLayer;
 import databaseInterfaceLayer.DatabaseObjectJJ;
 import java.util.ArrayList;
 import businessLogicLayer.DuplicateAccountException;
+import databaseInterfaceLayer.LoginDBO;
 
 public class Account implements Comparable<Account> {
 
@@ -75,6 +76,14 @@ public class Account implements Comparable<Account> {
 				
 			}
 
+	}
+	
+	public void getFlights(String username) {
+		
+		//Login to the database and add all of the flights 
+		//that correspond to this username to the ArrayList<Flights> for this account object
+		
+		
 	}
 	
 	public String getAccountID() {

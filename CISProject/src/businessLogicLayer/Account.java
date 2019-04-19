@@ -12,7 +12,7 @@ public class Account implements Comparable<Account> {
 	private String address;
 	private String email;
 	private String state;
-	private Integer zipCode;
+	private int zipCode;
 	private int ssn;
 	private ArrayList<Flight> flights;
 	private String userName;

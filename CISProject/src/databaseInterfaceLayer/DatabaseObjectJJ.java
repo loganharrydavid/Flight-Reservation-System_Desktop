@@ -2,7 +2,7 @@ package databaseInterfaceLayer;
 
 import java.sql.*;
 import businessLogicLayer.*;
-
+import java.util.ArrayList;
 
 public class DatabaseObjectJJ {
 
@@ -12,9 +12,14 @@ public class DatabaseObjectJJ {
 	static final String databaseUsername = "root";
 	static final String databasePassword = "redwall12";
 	static Connection connection;
+	public ArrayList<Object> returnList;
 	
 	public DatabaseObjectJJ() {
 		
+	}
+	public DatabaseObjectJJ(ArrayList<Object> list) {
+		
+		this.returnList = list;
 	}
 
 	public void setNewAccountValues(Account acc) {
@@ -47,6 +52,8 @@ public class DatabaseObjectJJ {
 			preparedStatement.setString(11, acc.getSecurityAnswer());
 
 			preparedStatement.executeUpdate();
+			
+			
 
 			connection.close();
 

@@ -19,9 +19,15 @@ public class Account implements Comparable<Account> {
 	private String password;
 	private String securityQuestion;
 	private String securityAnswer;
-	public static boolean is_Admin = false;
+	static final boolean is_Admin = false;
 
 	public Account() {
+		
+	}
+	public Account(String username,String password) {
+		this.userName = username;
+		this.password = password;
+		
 	}
 
 	public Account(String firstname, String lastName, String address, String email, String State, int zipCode,
@@ -106,19 +112,12 @@ public class Account implements Comparable<Account> {
 		return ssn;
 	}
 
-
 	public String getUserName() {
 		return userName;
 	}
 
 	public String getPassword() {
-
 		return password;
-
-	}
-
-	public void resetPassword(String password) {
-		this.password = password;
 	}
 
 	public String getSecurityQuestion() {
@@ -128,7 +127,11 @@ public class Account implements Comparable<Account> {
 	public String getSecurityAnswer() {
 		return securityAnswer;
 	}
-
+	protected void setUserName(String username) {
+	}
+	protected void setPassword(String password) {
+	}
+	
 	@Override
 	public String toString() {
 		return "\nFirst name " + this.getFirstName() + "\nLast name " + this.getLastName() + "\nUsername "

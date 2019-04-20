@@ -17,13 +17,19 @@ public class DatabaseObjectJJ {
 	//location of database set verify certificate to false to not use SSL to get rid of the verification error
 	
 	
+<<<<<<< HEAD
 	
+=======
+>>>>>>> branch 'master' of https://github.com/loganharrydavid/cisProject.git
 	public DatabaseObjectJJ(ArrayList<Object> list) {
 		
 		this.returnList = list;
 	}
+	public void getAccountValues(Account account) {
+		
+	}
 
-	public void setNewAccountValues(Account acc) {
+	public void setNewAccountValues(Account account) {
 
 		try {
 		
@@ -37,8 +43,13 @@ public class DatabaseObjectJJ {
 
 			connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
 
+<<<<<<< HEAD
 			String sqlQuery = " INSERT INTO Customer_Account(UserName,Password01,FirstName,LastName,Email,Address,City,State,Zipcode,SSN,SecurityQuestion,SecurityAnswer)"
 					+ " VALUES(dav745,1234,David,Kelly,dakell745@gmail.com,135 Edgewood Avenue,City,Georgia,111111111,What college do I go to,Goergia,State);";
+=======
+			String sqlQuery = " INSERT INTO account(username,password,firstname,lastname,address,state,email,zipcode,ssn,security_q,security_a)"
+				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?);";
+>>>>>>> branch 'master' of https://github.com/loganharrydavid/cisProject.git
 
 			// the prepared statement is more efficient to execute the same or similar
 			// database statement repeatedly
@@ -48,6 +59,7 @@ public class DatabaseObjectJJ {
 			preparedStatement.setString(2, account.getPassword());
 			preparedStatement.setString(3, account.getFirstName());
 			preparedStatement.setString(4, account.getLastName());
+<<<<<<< HEAD
 			preparedStatement.setString(3, account.getEmail());
 			preparedStatement.setString(5, account.getAddress());
 			//preparedStatement.setString(6, account.getCity());
@@ -57,6 +69,15 @@ public class DatabaseObjectJJ {
 			preparedStatement.setInt(9, account.getSsn());
 			preparedStatement.setString(10, account.getSecurityQuestion());
 			preparedStatement.setString(11, ccount.getSecurityAnswer());
+=======
+			preparedStatement.setString(5, account.getAddress());
+			preparedStatement.setString(6, account.getState());
+			preparedStatement.setString(7, account.getEmail());
+			preparedStatement.setInt(8, account.getZipCode());
+			preparedStatement.setInt(9, account.getSsn());
+			preparedStatement.setString(10, account.getSecurityQuestion());
+			preparedStatement.setString(11, account.getSecurityAnswer());
+>>>>>>> branch 'master' of https://github.com/loganharrydavid/cisProject.git
 
 			preparedStatement.executeUpdate();
 			

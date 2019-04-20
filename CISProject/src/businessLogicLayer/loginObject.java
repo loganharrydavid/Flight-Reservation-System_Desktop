@@ -3,8 +3,6 @@ package businessLogicLayer;
 
 import databaseInterfaceLayer.LoginDBO;
 
-
-
 public class loginObject {
 
 	private String username;

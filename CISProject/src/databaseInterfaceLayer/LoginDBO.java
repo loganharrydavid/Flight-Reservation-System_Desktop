@@ -6,7 +6,7 @@ public class LoginDBO {
 
 	static final String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB?verifyServerCertificate=false&useSSL=false";
 	static final String databaseUsername = "root";
-	static final String databasePassword = "redwall12";
+	static final String databasePassword = "1234abcd";
 	static Connection connection;
 
 	public String loginConn(String username) {

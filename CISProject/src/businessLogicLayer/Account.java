@@ -1,31 +1,40 @@
 package businessLogicLayer;
 
-import java.util.InputMismatchException;
+import databaseInterfaceLayer.DatabaseObjectJJ;
+import java.security.InvalidKeyException;
+import java.util.ArrayList;
+import databaseInterfaceLayer.*;
 
 public class Account implements Comparable<Account> {
-	
+
 	private String accountID;
 	private String firstName;
 	private String lastName;
 	private String address;
 	private String email;
 	private String state;
+	private String city;
 	private int zipCode;
-	private String ssn;
-	private Flight flight;
+	private int ssn;
+	private ArrayList<Flight> flights = new ArrayList<>();
 	private String userName;
 	private String password;
 	private String securityQuestion;
 	private String securityAnswer;
-	
+	static final boolean is_Admin = false;
 
 	public Account() {
 		
 	}
-
-	public Account(String firstname, String lastName, String address, String email,
-			String State, int zipCode, String ssn, String userName, String password, String sq) {
+	public Account(String username,String password) {
+		this.userName = username;
+		this.password = password;
 		
+	}
+
+	public Account(String firstname, String lastName, String address, String email, String State, int zipCode,
+			int ssn, String userName, String password, String sq, String sa) {
+
 		this.firstName = firstname;
 		this.lastName = lastName;
 		this.address = address;
@@ -36,162 +45,119 @@ public class Account implements Comparable<Account> {
 		this.userName = userName;
 		this.password = password;
 		this.securityQuestion = sq;
-		this.securityAnswer = "default";
+		this.securityAnswer = sa;
+
+	}
+
+	public static void generateAccount(String fname, String lname, String address, String email, String state, int zip,
+			int ssn, String un, String pword, String secQuestion, String sa) throws DuplicateAccountException {
+	
+			Boolean isDuplicate;
+			
+			Account acct = new Account(fname, lname, address, email, state, zip, ssn, un, pword, secQuestion, sa);
+			
+			databaseInterfaceLayer.LoginDBO search = new databaseInterfaceLayer.LoginDBO();
+		
+			
+			int find = search.searchFor(acct.getEmail());
+			
+			if(find == acct.getSsn()) {
+				isDuplicate = true;
+				throw new DuplicateAccountException("An account with this email address already exists");
+				
+			}else {
+				isDuplicate = false;
+			}
+			
+			if(!isDuplicate) {
+				
+				DatabaseObjectJJ input = new DatabaseObjectJJ();
+				
+				input.setNewAccountValues(acct);
+				
+			}
 
 	}
 	
+	public String[] getFlights() {
+		
+		String[]a = new String[this.flights.size()];
+		
+		for(int i = 0; i < this.flights.size(); i++) {
+			
+			a[i] += this.flights.get(i);}
+			
+			return a;
+	}
+	
+	
+	public String getPassword() {
+		return this.password;
+	}
 	
 	public String getAccountID() {
 		return accountID;
 	}
 
-	public Flight getFlights() {
-		
-		//should connect to database use a loop to return the flights in the table
-		
-		return flight;
-	}
-
-	public void setFlight(Flight flight) {
-		
-		//connects to database and adds the flight to the users account
-		
-		this.flight = flight;
-	}
-
-	public void setAccountID(String accountID) {
-		this.accountID = accountID;
-	}
-
 	public String getFirstName() {
 		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	
 	}
 
 	public String getLastName() {
 		return lastName;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
 	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
 	public String getState() {
 		return state;
 	}
 
-	public void setState(String state) {
-		this.state = state;
-	}
 
 	public int getZipCode() {
 		return zipCode;
 	}
 
-	public void setZipCode(int zipCode) {
-		this.zipCode = zipCode;
-	}
-
-	public String getSsn() {
+	public int getSsn() {
 		return ssn;
 	}
 
-	public void setSsn(String ssn) {
-		this.ssn = ssn;
-	}
-	
 	public String getUserName() {
 		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	
-	
-/* getPassword and setPassword will require input of answer to security question
- * to return the password and/or set a new one
- */
-
-	public String getPassword(String userAnswer, String securityAnswer) throws InputMismatchException {
-		
-		try {
-			if(userAnswer.equalsIgnoreCase(this.securityAnswer)){
-				return this.password;
-			}else {
-					throw new InputMismatchException("Wrong answer");
-					}
-			
-		}
-			catch(InputMismatchException ex) {
-				return ex.getMessage();
-			}
-			
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getSecurityQuestion() {
 		return securityQuestion;
 	}
 
-	public void setSecurityQuestion(String securityQuestion) {
-		this.securityQuestion = securityQuestion;
-	}
-
 	public String getSecurityAnswer() {
 		return securityAnswer;
 	}
-
-	public void setSecurityAnswer(String securityAnswer) {
-		this.securityAnswer = securityAnswer;
+	protected void setUserName(String username) {
 	}
-	public static void generateAccount(String fname, String lname, String address,String email,
-		String state, int zip, String ssn, String un, String pword, String secQuestion) {
-		
-		
-		Account  acct1 = new Account(fname,lname,address,email,state, zip, ssn,un,pword,secQuestion);
-		
-		System.out.println(acct1.toString());	
+	protected void setPassword(String password) {
 	}
-
 	
 	@Override
 	public String toString() {
-		return "\nFirst name " + this.getFirstName() + "\nLast name " +
-	this.getLastName() + "\nUsername " + this.getUserName() +"\nAccount ID: " + getAccountID();
+		return "\nFirst name " + this.getFirstName() + "\nLast name " + this.getLastName() + "\nUsername "
+				+ this.getUserName() + "\nAccount ID: " + getAccountID();
 	}
 
 	@Override
 	public int compareTo(Account a) {
-		if (accountID == a.accountID) {
+		if (ssn == a.getSsn()) {
 			return 0;
 		} else
 			return -1;
 	}
-	
-
 
 }

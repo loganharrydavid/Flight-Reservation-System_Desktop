@@ -1,60 +1,73 @@
 package databaseInterfaceLayer;
 
 import java.sql.*;
+import businessLogicLayer.*;
+import java.util.ArrayList;
 
 public class DatabaseObjectJJ {
+
+	// location of database //set verify certificate to false to not use SSL to get
+	// rid of the verification error
+	static final String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB";
+	static final String databaseUsername = "root";
+	static final String databasePassword = "1234abcd"; 
+	static Connection connection;
+	public ArrayList<Object> returnList;
 	
+
 	//location of database //set verify certificate to false to not use SSL to get rid of the verification error
-	static String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB?verifyServerCertificate=false&useSSL=false";
-	static String databaseUsername ="root";
-	static String databasePassword = "Redwall12";
 	
 	
-	public static void main(String [] args) {
+	public DatabaseObjectJJ(ArrayList<Object> list) {
 		
-		DatabaseObjectJJ DBO = new DatabaseObjectJJ();
-		
-		DBO.setAccountIDValue("12345");
+		this.returnList = list;
 	}
-	
-	public void setAccountIDValue(String DBvalue) {
+	public void getAccountValues(Account account) {
 		
+	}
+
+	public void setNewAccountValues(Account account) {
+
 		try {
+		
+				 Class.forName("java.sql.Driver");
 			
+			System.out.println("database connected! ");
 			
-			//driver location
-			Class.forName("java.sql.Driver");
-			
-			//this creates the connection to the database 
-			Connection connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
-			
-			System.out.println("databse connected! ");
-			
-			
-			String sqlQuery = 
-			" INSERT INTO Account(username)"
-			+ " VALUES(?);";
-			
+		
 			
 			//the prepared statement is more efficient to execute the same or similar database statement repeatedly
+
+			connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
+
+			String sqlQuery = " INSERT INTO account(username,password,firstname,lastname,address,state,email,zipcode,ssn,security_q,security_a)"
+				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?);";
+
+			// the prepared statement is more efficient to execute the same or similar
+			// database statement repeatedly
 			PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
-			
-			String bye = DBvalue;
-		
-			
-			
-			preparedStatement.setString(1, bye);
-			
-			
+
+			preparedStatement.setString(1, account.getUserName());
+			preparedStatement.setString(2, account.getPassword());
+			preparedStatement.setString(3, account.getFirstName());
+			preparedStatement.setString(4, account.getLastName());
+			preparedStatement.setString(5, account.getAddress());
+			preparedStatement.setString(6, account.getState());
+			preparedStatement.setString(7, account.getEmail());
+			preparedStatement.setInt(8, account.getZipCode());
+			preparedStatement.setInt(9, account.getSsn());
+			preparedStatement.setString(10, account.getSecurityQuestion());
+			preparedStatement.setString(11, account.getSecurityAnswer());
+
 			preparedStatement.executeUpdate();
 			
 			
+
 			connection.close();
-			
-			//execute the query
-			//ResultSet rSet = preparedStatement.executeQuery();
-			
-			
+
+			// execute the query
+			// ResultSet rSet = preparedStatement.executeQuery();
+
 //			//look through database
 //			while (rSet.next()) {
 //				
@@ -62,12 +75,12 @@ public class DatabaseObjectJJ {
 //				
 //				
 //			}
-			
-		} catch (Exception e) {
+
+		} 
+		catch (Exception e) {
 			System.out.println("something messed up in database! :-(");
 			e.printStackTrace();
 		}
 
 	}
-
 }

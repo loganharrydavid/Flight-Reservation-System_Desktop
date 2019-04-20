@@ -1,6 +1,6 @@
 package graphicUserInterface;
 
-
+import businessLogicLayer.loginObject;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -30,7 +30,7 @@ public class Login extends Application {
 	}
 	
 	     
-		@Override
+	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		
@@ -66,9 +66,12 @@ public class Login extends Application {
 	primaryStage.setScene(scene);
 	primaryStage.show();
 	
+
 	
 	SignUpButton.setOnAction(e->{
+		
 		Registration reg = new Registration();
+	
 		try {
 			reg.start(primaryStage);
 		} catch (Exception e1) {
@@ -77,7 +80,19 @@ public class Login extends Application {
 		}
 	});
 	
-	
+	loginButton.setOnAction(e->{
+
+		loginObject login = new loginObject(usernameInput.getText(),passwordInput.getText());
+		
+		if(login.executeLogin() == true) {
+				try {
+					MainMenu nextScreen = new MainMenu();
+					nextScreen.start(primaryStage);
+				} catch (Exception ex) {
+						ex.printStackTrace();	
+				}
+			
+		}});
 	
 	}
     

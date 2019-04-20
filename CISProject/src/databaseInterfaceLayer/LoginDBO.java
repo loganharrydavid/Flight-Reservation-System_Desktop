@@ -43,12 +43,11 @@ public class LoginDBO {
 
 	}
 
-	public int searchFor(String email) {
+	public int searchFor(String email){
 		
 		 int i = 0;
 
 		try {
-
 
 			System.out.println("databse connected! ");
 
@@ -67,7 +66,7 @@ public class LoginDBO {
 			 
 		connection.close();
 			
-		} catch (SQLException ex) {
+		} catch (Exception ex) {
 			
 			ex.printStackTrace();
 			return 0;

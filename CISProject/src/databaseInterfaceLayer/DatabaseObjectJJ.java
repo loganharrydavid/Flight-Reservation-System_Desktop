@@ -1,7 +1,6 @@
 package databaseInterfaceLayer;
 
 import java.sql.*;
-import java.sql.Driver;
 import businessLogicLayer.*;
 import java.util.ArrayList;
 
@@ -12,24 +11,21 @@ public class DatabaseObjectJJ {
 	static final String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB";
 	static final String databaseUsername = "root";
 	static final String databasePassword = "1234abcd"; 
+	Connection connection;
 	public ArrayList<Object> returnList;
 	
-
-	//location of database //set verify certificate to false to not use SSL to get rid of the verification error
-	
-
 	public void setNewAccountValues(Account account) {
 
 		try {
 		
-				 Class.forName("java.sql.Driver");
+			 Class.forName("java.sql.Driver");
 			
 			System.out.println("database connected! ");
 			
 
 			//the prepared statement is more efficient to execute the same or similar database statement repeatedly
 
-			Connection connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
+			 connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
 
 			String sqlQuery = " INSERT INTO account(username,password,firstname,lastname,address,state,email,zipcode,ssn,security_q,security_a)"
 				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?);";

@@ -12,18 +12,23 @@ public class DatabaseObjectJJ {
 	static final String databaseUsername = "root";
 	static final String databasePassword = "1234abcd"; 
 	static Connection connection;
+	
 	public ArrayList<Object> returnList;
 	
 
 	//location of database //set verify certificate to false to not use SSL to get rid of the verification error
 	
 	
-	public DatabaseObjectJJ(ArrayList<Object> list) {
+	public static void main(String[] args) {
 		
-		this.returnList = list;
-	}
-	public void getAccountValues(Account account) {
+		int i = 344;
+		int j = 456;
 		
+		Account.generateAccount("string", "jkl;asdf", "kjalsdf", "l;aisjdf", "HG", i, j, "UN", "l;kajsdf", "liaj;sdf", "ljasndf");
+		
+		
+		
+			
 	}
 
 	public void setNewAccountValues(Account account) {
@@ -34,8 +39,7 @@ public class DatabaseObjectJJ {
 			
 			System.out.println("database connected! ");
 			
-		
-			
+
 			//the prepared statement is more efficient to execute the same or similar database statement repeatedly
 
 			connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
@@ -65,16 +69,6 @@ public class DatabaseObjectJJ {
 
 			connection.close();
 
-			// execute the query
-			// ResultSet rSet = preparedStatement.executeQuery();
-
-//			//look through database
-//			while (rSet.next()) {
-//				
-//				//do whatever
-//				
-//				
-//			}
 
 		} 
 		catch (Exception e) {

@@ -33,6 +33,15 @@ public static void main(String[] args) {
 		Button bookFlight = new Button("Book A Flight");
 		GridPane.setConstraints(bookFlight,1,1);
 		
+		bookFlight.setOnAction(e->{
+			flightSearch fs = new flightSearch();
+			try {
+				fs.start(primaryStage);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
 		
 		grid.getChildren().addAll(whatNext,bookFlight);
 		

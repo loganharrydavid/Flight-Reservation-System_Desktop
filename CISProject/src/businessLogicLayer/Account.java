@@ -1,7 +1,6 @@
 package businessLogicLayer;
 
 import databaseInterfaceLayer.DatabaseObjectJJ;
-
 import java.security.InvalidKeyException;
 import java.util.ArrayList;
 import databaseInterfaceLayer.*;
@@ -14,6 +13,7 @@ public class Account implements Comparable<Account> {
 	private String address;
 	private String email;
 	private String state;
+	private String city;
 	private int zipCode;
 	private int ssn;
 	private ArrayList<Flight> flights = new ArrayList<>();
@@ -90,17 +90,9 @@ public class Account implements Comparable<Account> {
 			return a;
 	}
 	
+	
 	public String getPassword() {
-		
-		String secureAnswer = "";   //databaseObject.method(toReturn correct Answer)
-		try {
-			if(this.securityAnswer != secureAnswer)
-				throw new InvalidKeyException("Incorrect answer to security question");
-		}catch(InvalidKeyException ex) {
-			ex.getMessage();
-			
-		}
-		return password;
+		return this.password;
 	}
 	
 	public String getAccountID() {

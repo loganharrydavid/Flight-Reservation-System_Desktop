@@ -69,16 +69,6 @@ public class DatabaseObjectJJ {
 
 			connection.close();
 
-			// execute the query
-			// ResultSet rSet = preparedStatement.executeQuery();
-
-//			//look through database
-//			while (rSet.next()) {
-//				
-//				//do whatever
-//				
-//				
-//			}
 
 		} 
 		catch (Exception e) {

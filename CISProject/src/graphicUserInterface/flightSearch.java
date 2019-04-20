@@ -40,11 +40,10 @@ public class flightSearch extends Application {
 		
 		depatureCity = new Label(" From* ");
 		GridPane.setConstraints(depatureCity,0,0);
-		Button button1 = new Button(" From ");
-		GridPane.setConstraints(depatureCity, 0, 2);
+		
 		
 		ChoiceBox<String> choicebox = new ChoiceBox<>();
-		GridPane.setConstraints(choicebox, 1, 2);
+		GridPane.setConstraints(choicebox, 0, 1);
 
 		
 		// getitems returns observablelist object which you can add item to.
@@ -55,11 +54,11 @@ public class flightSearch extends Application {
 		choicebox.getItems().add(" Sun Spear ");
 		choicebox.getItems().add(" Summer Hall ");		
 		destinationCity = new Label(" To* ");
-		GridPane.setConstraints(destinationCity, 1, 3);
+		GridPane.setConstraints(destinationCity, 1, 0);
 		
 		
 		ChoiceBox<String> choicebox1 = new ChoiceBox<>();
-		GridPane.setConstraints(choicebox1, 2, 2);
+		GridPane.setConstraints(choicebox1, 1, 1);
 		
 		choicebox1.getItems().add(" Atlanta ");
 		choicebox1.getItems().add(" Winterfell ");
@@ -70,7 +69,7 @@ public class flightSearch extends Application {
 		
 		
 		depatureDate = new Label(" Depart Date ");
-		GridPane.setConstraints(depatureDate, 1, 0);
+		GridPane.setConstraints(depatureDate, 0, 3);
 		
 		
 		DatePicker dp = new DatePicker();
@@ -80,11 +79,11 @@ public class flightSearch extends Application {
 		
 		StackPane root = new StackPane();
 		root.getChildren().add(dp);
-		GridPane.setConstraints(dp, 1, 1);
+		GridPane.setConstraints(dp, 0, 4);
 		
 		
 		returnDate = new Label(" Return Date ");
-		GridPane.setConstraints(depatureDate, 2, 0);
+		GridPane.setConstraints(returnDate, 1, 3);
 		
 		
 		DatePicker dp1 = new DatePicker();
@@ -94,19 +93,22 @@ public class flightSearch extends Application {
 		
 		StackPane root1 = new StackPane();
 		root.getChildren().add(dp1);
-		GridPane.setConstraints(dp1, 2, 1);
+		GridPane.setConstraints(dp1, 1, 4);
 		
 		
 		passanger = new Label(" Travelers* ");
-		GridPane.setConstraints(passanger, 0, 3);
+		GridPane.setConstraints(passanger, 0, 5);
 		passangerInput = new TextField();
 		passangerInput.setPromptText(" number of Travelers ");
-		GridPane.setConstraints(passangerInput, 1, 3);
+		GridPane.setConstraints(passangerInput, 0, 6);
 		
+		Button search = new Button(" Search ");
+		GridPane.setConstraints(search, 0, 8);
+
 	
 		
 		grid.getChildren().addAll( depatureCity, choicebox,destinationCity,choicebox1,dp,depatureDate,dp1,returnDate
-				,passanger,passangerInput);
+				,passanger,passangerInput,search);
 
 			
 		scene = new Scene(grid, 600,600, Color.DARKBLUE);
@@ -115,5 +117,6 @@ public class flightSearch extends Application {
 		primaryStage.show();
 		
 	}
-
 }
+
+

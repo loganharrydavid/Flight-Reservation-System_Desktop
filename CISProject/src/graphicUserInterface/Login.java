@@ -60,7 +60,7 @@ public class Login extends Application {
 	grid.getChildren().addAll(username,usernameInput,password,passwordInput,loginButton,SignUpButton);
 	
 	
-	scene = new Scene(grid, 500,500);
+	scene = new Scene(grid, 500,500,Color.AQUA);
 	
 	
 	primaryStage.setScene(scene);

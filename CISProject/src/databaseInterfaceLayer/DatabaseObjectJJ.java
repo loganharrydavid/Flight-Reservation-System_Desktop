@@ -11,7 +11,7 @@ public class DatabaseObjectJJ {
 	// rid of the verification error
 	static final String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB";
 	static final String databaseUsername = "root";
-	static final String databasePassword = "1234abcd"; //redwall112
+	static final String databasePassword = "1234abcd"; 
 	static Connection connection;
 	public ArrayList<Object> returnList;
 	

@@ -5,7 +5,7 @@ import businessLogicLayer.*;
 import java.util.ArrayList;
 
 public class DatabaseObjectJJ {
-
+//test
 	// location of database //set verify certificate to false to not use SSL to get
 	// rid of the verification error
 	static final String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB";

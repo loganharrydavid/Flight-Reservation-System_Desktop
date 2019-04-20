@@ -1,5 +1,6 @@
 package businessLogicLayer;
 
+import java.util.ArrayList;
 
 
 public class Flight implements Comparable<Flight> {
@@ -10,7 +11,7 @@ public class Flight implements Comparable<Flight> {
 	private String departTime;
 	private String arriveTime;
 	private String flightDate;
-	private String passengersAccountID;
+	private ArrayList <Account> passengers = new ArrayList<>();
 	private int numberOfSeats;
 	
 	public Flight() {
@@ -30,13 +31,15 @@ public class Flight implements Comparable<Flight> {
 
 	}
 	
-
-	public String getPassengersAccountID() {
-		return passengersAccountID;
+	public ArrayList<Account> getPassengers() {
+		return passengers;
 	}
 
-	public void addPassengersAccountID(String passengersAccountID) {
-		this.passengersAccountID = passengersAccountID;
+	public void bookFlight(Account account) {
+		
+		if(this.getNumberOfSeats() > 0) {
+		this.passengers.add(account);
+		}
 	}
 
 	public String getDepartureCity() {
@@ -85,7 +88,8 @@ public class Flight implements Comparable<Flight> {
 
 	public void setFlightNumber(int flightNumber) {
 		this.flightNumber = flightNumber;
-	}
+		
+		}
 
 	public int getNumberOfSeats() {
 		return numberOfSeats;
@@ -95,12 +99,6 @@ public class Flight implements Comparable<Flight> {
 		this.numberOfSeats = numberOfSeats;
 	}
 	
-	public void bookFlight(){
-		
-		java.util.Scanner input = new java.util.Scanner(System.in);
-		
-		
-	}
 
 	@Override
 	public String toString() {

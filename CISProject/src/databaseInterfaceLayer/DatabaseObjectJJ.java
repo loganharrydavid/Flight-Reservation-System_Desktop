@@ -5,7 +5,7 @@ import businessLogicLayer.*;
 import java.util.ArrayList;
 
 public class DatabaseObjectJJ {
-
+	
 	// location of database //set verify certificate to false to not use SSL to get
 	// rid of the verification error
 	static final String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB";
@@ -13,6 +13,10 @@ public class DatabaseObjectJJ {
 	static final String databasePassword = "1234abcd"; 
 	Connection connection;
 	public ArrayList<Object> returnList;
+	
+	public static void main(String[] args) {
+		//Account.generateAccount(fname, lname, address, email, state, zip, ssn, un, pword, secQuestion, sa);
+	}
 	
 	public void setNewAccountValues(Account account) {
 

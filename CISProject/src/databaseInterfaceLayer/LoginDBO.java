@@ -49,7 +49,6 @@ public class LoginDBO {
 
 		try {
 
-			Class.forName("java.sql.Driver");
 
 			System.out.println("databse connected! ");
 
@@ -68,7 +67,7 @@ public class LoginDBO {
 			 
 		connection.close();
 			
-		} catch (SQLException|ClassNotFoundException ex) {
+		} catch (SQLException ex) {
 			
 			ex.printStackTrace();
 			return 0;

@@ -52,11 +52,11 @@ public class Account implements Comparable<Account> {
 	public static void generateAccount(String fname, String lname, String address, String email, String state, int zip,
 			int ssn, String un, String pword, String secQuestion, String sa) throws DuplicateAccountException {
 	
-			Boolean isDuplicate;
+			Boolean isDuplicate = false;
 			
 			Account acct = new Account(fname, lname, address, email, state, zip, ssn, un, pword, secQuestion, sa);
 			
-			databaseInterfaceLayer.LoginDBO search = new databaseInterfaceLayer.LoginDBO();
+			LoginDBO search = new LoginDBO();
 		
 			
 			int find = search.searchFor(acct.getEmail());

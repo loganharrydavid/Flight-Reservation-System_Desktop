@@ -50,9 +50,6 @@ public class LoginDBO {
 
 		try {
 			
-			
-
-			System.out.println("databse connected! ");
 
 			connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
 

@@ -1,7 +1,6 @@
 package databaseInterfaceLayer;
 
 import java.sql.*;
-import java.sql.Driver;
 import businessLogicLayer.*;
 import java.util.ArrayList;
 

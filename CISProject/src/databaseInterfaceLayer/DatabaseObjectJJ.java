@@ -14,6 +14,7 @@ public class DatabaseObjectJJ {
 	Connection connection;
 	public ArrayList<Object> returnList;
 	
+	
 	public void setNewAccountValues(Account account) {
 
 		try {

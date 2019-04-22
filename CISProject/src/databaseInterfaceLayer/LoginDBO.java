@@ -58,7 +58,7 @@ public class LoginDBO {
 
 			ResultSet res = preparedStatement.executeQuery();
 
-			 while(res.next()) {
+				if(res.next()) {
 
 				i = res.getInt("ssn");
 			

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package businessLogicLayer;
 
 import databaseInterfaceLayer.DatabaseObjectJJ;
@@ -332,4 +331,3 @@ public class Account implements Comparable<Account> {
 	}
 
 }
->>>>>>> branch 'master' of https://github.com/loganharrydavid/cisProject.git

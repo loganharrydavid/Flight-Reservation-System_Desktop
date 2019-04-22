@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class LoginDBO {
 
-	static final String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB?verifyServerCertificate=false&useSSL=false";
+	static final String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB";
 	static final String databaseUsername = "root";
 	static final String databasePassword = "1234abcd";
 	static Connection connection;
@@ -43,15 +43,13 @@ public class LoginDBO {
 
 	}
 
-	public int searchFor(String email) {
+	public Boolean searchFor(String email){
 		
-		 int i = 0;
+		Boolean result;
+		int i = 0;
 
 		try {
-
-			Class.forName("java.sql.Driver");
-
-			System.out.println("databse connected! ");
+			
 
 			connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
 
@@ -60,19 +58,27 @@ public class LoginDBO {
 
 			ResultSet res = preparedStatement.executeQuery();
 
-			 while(res.next()) {
+				if(res.next()) {
 
 				i = res.getInt("ssn");
 			
 			}
 			 
+			 
 		connection.close();
 			
-		} catch (SQLException|ClassNotFoundException ex) {
+		} catch (Exception ex) {
 			
 			ex.printStackTrace();
-			return 0;
+			
 	}
-		return i;
+		 if(i > 0) {
+			 result = true;
+		 }
+		 else {
+			 result = false;
+		 }
+		return result;
+		
 }
 	}

@@ -1,6 +1,7 @@
 package businessLogicLayer;
 
 import java.util.ArrayList;
+import businessLogicLayer.Account;
 
 
 public class Flight implements Comparable<Flight> {
@@ -31,10 +32,22 @@ public class Flight implements Comparable<Flight> {
 
 	}
 	
-	public ArrayList<Account> getPassengers() {
-		return passengers;
+	public String getPassengers(ArrayList<Account> passengers) {
+		
+		
+		String toPrint = "";
+		
+		for (int i = 0; i < passengers.size(); i++ ) {
+			
+			Account account = passengers.get(i);
+			
+			toPrint += account.toString();
+			
+		}
+			
+		return toPrint;
 	}
-
+	
 	public void bookFlight(Account account) {
 		
 		if(this.getNumberOfSeats() > 0) {

@@ -15,7 +15,8 @@ public class DatabaseObjectJJ {
 	public ArrayList<Object> returnList;
 	
 	public static void main(String[] args) {
-		//Account.generateAccount(fname, lname, address, email, state, zip, ssn, un, pword, secQuestion, sa);
+		
+		//Account.generateAccount(fname, lname, address, email, state, city, zip, ssn, un, pword, secQuestion, sa);
 	}
 	
 	public void setNewAccountValues(Account account) {
@@ -31,8 +32,8 @@ public class DatabaseObjectJJ {
 
 			 connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
 
-			String sqlQuery = " INSERT INTO account(username,password,firstname,lastname,address,state,email,zipcode,ssn,security_q,security_a)"
-				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?);";
+			String sqlQuery = " INSERT INTO account(username,password,firstname,lastname,address,state,city,email,zipcode,ssn,security_q,security_a)"
+				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?);";
 
 			// the prepared statement is more efficient to execute the same or similar
 			// database statement repeatedly
@@ -44,11 +45,12 @@ public class DatabaseObjectJJ {
 			preparedStatement.setString(4, account.getLastName());
 			preparedStatement.setString(5, account.getAddress());
 			preparedStatement.setString(6, account.getState());
-			preparedStatement.setString(7, account.getEmail());
-			preparedStatement.setInt(8, account.getZipCode());
-			preparedStatement.setInt(9, account.getSsn());
-			preparedStatement.setString(10, account.getSecurityQuestion());
-			preparedStatement.setString(11, account.getSecurityAnswer());
+			preparedStatement.setString(7,account.getCity());
+			preparedStatement.setString(8, account.getEmail());
+			preparedStatement.setInt(9, account.getZipCode());
+			preparedStatement.setInt(10, account.getSsn());
+			preparedStatement.setString(11, account.getSecurityQuestion());
+			preparedStatement.setString(12, account.getSecurityAnswer());
 
 			preparedStatement.executeUpdate();
 			

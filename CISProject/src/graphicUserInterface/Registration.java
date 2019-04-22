@@ -22,6 +22,7 @@ public class Registration extends Application {
 	Label address;
 	Label zipCode;
 	Label state;
+	Label city;
 	Label username;
 	Label email;
 	Label passwords;
@@ -34,6 +35,7 @@ public class Registration extends Application {
 	TextField addressInput;
 	TextField zipCodeInput;
 	TextField stateInput;
+	TextField cityInput;
 	TextField userNameInput;
 	TextField emailInput;
 	PasswordField passwordInput;
@@ -84,10 +86,10 @@ public class Registration extends Application {
 				
 		// Zip Code
 		zipCode = new Label(" Zip Code: ");
-		GridPane.setConstraints(zipCode, 0, 8);
+		GridPane.setConstraints(zipCode, 0, 10);
 		zipCodeInput = new TextField();
 		zipCodeInput.setPromptText(" Enter Zip Code ");
-		GridPane.setConstraints(zipCodeInput, 0, 9);
+		GridPane.setConstraints(zipCodeInput, 0, 11);
 	
 		// UserName
 		username = new Label("Enter Username:");
@@ -137,9 +139,15 @@ public class Registration extends Application {
 		SecurityAnswerInput.setPromptText(" Answer ");
 		GridPane.setConstraints(SecurityAnswerInput, 1, 11);
 		
+		city = new Label("City:");
+		GridPane.setConstraints(city, 0, 8);
+		cityInput = new TextField();
+		cityInput.setPromptText(" Enter City: ");
+		GridPane.setConstraints(cityInput, 0, 9);
+		
 		
 		submitButton = new Button(" Submit Registration ");
-	    GridPane.setConstraints(submitButton, 0, 10);
+	    GridPane.setConstraints(submitButton, 0, 12);
 		//Need to add Security Answer
 		
 		grid.getChildren().addAll(firstName, firstNameInput, lastName, lastNameInput, address,
@@ -148,7 +156,7 @@ public class Registration extends Application {
 				                  passwords, passwordInput, confirmPasswords, 
 				                  confirmPasswordInput, SSN, SSNInput,
 				                  SecurityQuestion, SecurityQuestionInput,SecurityAnswer,
-				                  SecurityAnswerInput,submitButton);
+				                  SecurityAnswerInput,submitButton,city,cityInput);
 		
 		
 		
@@ -161,7 +169,7 @@ public class Registration extends Application {
 			
 		try {
 				Account.generateAccount(firstNameInput.getText(),lastNameInput.getText(),addressInput.getText(),
-				emailInput.getText(),stateInput.getText(),Integer.parseInt(zipCodeInput.getText()),
+				emailInput.getText(),stateInput.getText(),cityInput.getText(),Integer.parseInt(zipCodeInput.getText()),
 				Integer.parseInt(SSNInput.getText()), userNameInput.getText(), passwordInput.getText(), 
 				SecurityQuestionInput.getText(),SecurityAnswerInput.getText());
 				
@@ -189,4 +197,3 @@ public class Registration extends Application {
 }
 
 	
-

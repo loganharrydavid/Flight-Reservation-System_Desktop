@@ -58,7 +58,11 @@ public class LoginDBO {
 
 			ResultSet res = preparedStatement.executeQuery();
 
+<<<<<<< HEAD
 			 if(res.next()) {
+=======
+				if(res.next()) {
+>>>>>>> branch 'master' of https://github.com/loganharrydavid/cisProject.git
 
 				i = res.getInt("ssn");
 			

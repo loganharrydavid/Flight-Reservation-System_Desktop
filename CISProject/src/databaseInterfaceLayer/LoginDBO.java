@@ -39,10 +39,10 @@ public class LoginDBO {
 			ex.printStackTrace();
 
 		}
-		return result;
+		return result;}
 
-	}
-
+	
+	
 	public Boolean searchFor(String email){
 		
 		Boolean result;
@@ -61,7 +61,7 @@ public class LoginDBO {
 
 			 if(res.next()) {
 
-				if(res.next()) {
+				
 
 
 				i = res.getInt("ssn");
@@ -84,5 +84,5 @@ public class LoginDBO {
 		 }
 		return result;
 		
-}}}
+}}
 	

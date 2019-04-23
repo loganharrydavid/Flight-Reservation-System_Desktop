@@ -60,8 +60,8 @@ public class DatabaseObjectJJ {
 		}
 
 	}
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> branch 'master' of https://github.com/loganharrydavid/cisProject.git
+
+
+

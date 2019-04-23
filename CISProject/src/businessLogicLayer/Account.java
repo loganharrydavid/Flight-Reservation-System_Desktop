@@ -163,8 +163,6 @@ public class Account implements Comparable<Account> {
 			return -1;
 	}
 
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> branch 'master' of https://github.com/loganharrydavid/cisProject.git
+

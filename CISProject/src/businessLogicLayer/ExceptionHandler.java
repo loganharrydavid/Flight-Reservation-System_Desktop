@@ -1,13 +1,32 @@
 package businessLogicLayer;
 
+import businessLogicLayer.Account;
 
 public class ExceptionHandler extends Exception{
-	
-	private static final long serialVersionUID = 1L;
 	
 	
 	public ExceptionHandler(String message) {
 		super(message);
+	}
+	
+	//this method is called when a new user tries to register an account but before it is stored in the database
+	//the purpose is to check the format of their input (i.e.) email address, SSN, etc...
+	public void checkRegistration(Account account) {
+		
+		try {
+		
+		String ssnString = "" + account.getSsn();		
+		
+		int lengthOfSsn = String.valueOf(ssnString).length();
+		
+		if(lengthOfSsn != 9) {
+			throw new SSNException("Something wrong with the social security number");
+		}
+		}catch(SSNException ex) {
+		ex.toString();
+		}
+		
+		
 	}
 
 		}

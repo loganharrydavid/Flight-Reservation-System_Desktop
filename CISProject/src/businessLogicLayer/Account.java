@@ -1,32 +1,32 @@
 package businessLogicLayer;
 
 import databaseInterfaceLayer.DatabaseObjectJJ;
-import java.security.InvalidKeyException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import databaseInterfaceLayer.*;
 
 public class Account implements Comparable<Account> {
-	
-	
-	private String accountID; // ArrayList[0] returnObjectList;
-	private String userName; // ArrayList[1] returnObjectList;
-	private String password; // ArrayList[2] returnObjectList;
-	private String firstName; // ArrayList[3] returnObjectList;
-	private String lastName; // ArrayList[4] returnObjectList;
-	private String address; // ArrayList[5] returnObjectList;
-	private String state; // ArrayList[6] returnObjectList;
-	private String city; // ArrayList[7] returnObjectList;
-	private String email; // ArrayList[8] returnObjectList;
-	private int zipCode; // ArrayList[9] returnObjectList;
-	private int ssn; // ArrayList[10] returnObjectList;
-	private String securityQuestion; // ArrayList[11] returnObjectList;
-	private String securityAnswer; // ArrayList[12] returnObjectList;
-	static final boolean is_Admin = false; // ArrayList[13] returnObjectList;
-	private ArrayList<Flight> flights = new ArrayList<>();
-	
-	
-	public Account() {
 
+	private int accountID;
+	private String userName;
+	private String password;
+	private String firstName;
+	private String lastName;
+	private String address;
+	private String state;
+	private String city;
+	private String email;
+	private int zipCode;
+	private int ssn;
+	private String securityQuestion;
+	private String securityAnswer;
+	private static boolean is_Admin = false;
+	private ArrayList<Flight> flights = new ArrayList<>();
+
+	public Account() {
 	}
 
 	public Account(String username, String password) {
@@ -34,9 +34,10 @@ public class Account implements Comparable<Account> {
 		this.password = password;
 
 	}
-	
-	//Creates an Account object. Customer Accounts are set to is_Admin = false; and Admin are set to true;
-	
+
+	// Creates an Account object. Customer Accounts are set to is_Admin = false; and
+	// Admin are set to true;
+
 	public Account(String firstname, String lastName, String address, String email, String State, String city,
 			int zipCode, int ssn, String userName, String password, String sq, String sa) {
 
@@ -55,8 +56,9 @@ public class Account implements Comparable<Account> {
 
 	}
 
-	public static void generateAccount(String fname, String lname, String address, String email, String state, String city,
-			int zip, int ssn, String un, String pword, String secQuestion, String sa) throws DuplicateAccountException {
+	public static void generateAccount(String fname, String lname, String address, String email, String state,
+			String city, int zip, int ssn, String un, String pword, String secQuestion, String sa)
+			throws DuplicateAccountException {
 
 		Account acct = new Account(fname, lname, address, email, state, city, zip, ssn, un, pword, secQuestion, sa);
 
@@ -72,6 +74,64 @@ public class Account implements Comparable<Account> {
 
 			input.setNewAccountValues(acct);
 
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		returnAccountFromDatabase("name");
+
+	}
+
+	// retrieves an Account from the DB. Use any String field in the Account to tell
+	// it which one to return
+	public static void returnAccountFromDatabase(String un) {
+
+		final String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB";
+		final String databaseUsername = "root";
+		final String databasePassword = "1234abcd";
+
+		ArrayList<Object> account = new ArrayList<>();
+
+		try {
+
+			Class.forName("java.sql.Driver");
+
+			Connection connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
+			
+
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("SELECT * FROM account WHERE username=" + "'" + un + "'");
+
+			ResultSet res = preparedStatement.executeQuery();
+
+			while (res.next()) {
+
+				
+				account.add(res.getString("username"));
+				account.add(res.getString("password"));
+				account.add(res.getString("firstname"));
+				account.add(res.getString("lastname"));
+				account.add(res.getString("address"));
+				account.add(res.getString("state"));
+				account.add(res.getString("city"));
+				account.add(res.getString("email"));
+				account.add(res.getInt("zipcode"));
+				account.add(res.getInt("ssn"));
+				account.add(res.getString("security_q"));
+				account.add(res.getString("security_a"));
+				account.add(res.getBoolean("is_Admin"));
+
+			}
+			connection.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		for (int i = 0; i < account.size(); i++) {
+			System.out.println(account.get(i));
 		}
 
 	}
@@ -92,7 +152,7 @@ public class Account implements Comparable<Account> {
 		return this.password;
 	}
 
-	public String getAccountID() {
+	public int getAccountID() {
 		return accountID;
 	}
 
@@ -123,6 +183,7 @@ public class Account implements Comparable<Account> {
 	public int getSsn() {
 		return ssn;
 	}
+
 	public String getCity() {
 		return city;
 	}
@@ -139,20 +200,72 @@ public class Account implements Comparable<Account> {
 		return securityAnswer;
 	}
 
-	protected void setUserName(String username) {
+	public void setUserName(String username) {
+		this.userName = username;
 	}
 
-	protected void setPassword(String password) {
-		
+	public static boolean isAdmin() {
+		return is_Admin;
 	}
-	protected void setCity(String city) {
-		
+
+	public void setAccountID(int accountID) {
+		this.accountID = accountID;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setZipCode(int zipCode) {
+		this.zipCode = zipCode;
+	}
+
+	public void setSsn(int ssn) {
+		this.ssn = ssn;
+	}
+
+	public void setSecurityQuestion(String securityQuestion) {
+		this.securityQuestion = securityQuestion;
+	}
+
+	public void setSecurityAnswer(String securityAnswer) {
+		this.securityAnswer = securityAnswer;
+	}
+
+	public void setFlights(ArrayList<Flight> flights) {
+		this.flights = flights;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+
 	}
 
 	@Override
 	public String toString() {
-		return "\nFirst name " + this.getFirstName() + "\nLast name " + this.getLastName() + "\nUsername "
-				+ this.getUserName() + "\nAccount ID: " + getAccountID();
+		return "\nAccount ID: " + getAccountID() + "\nUsername " + this.getUserName() + "\nFirst name "
+				+ this.getFirstName() + "\nLast name " + this.getLastName();
 	}
 
 	@Override
@@ -163,6 +276,4 @@ public class Account implements Comparable<Account> {
 			return -1;
 	}
 
-
 }
-

@@ -21,7 +21,7 @@ public abstract class User {
 		
 	}
 
-	public abstract void generateAccount(String fname, String lname, String address, String email, String state, String city,
+	public abstract void generateAccount(String fname, String lname, String address, String email, String state,
 			int zip, int ssn, String un, String pword, String secQuestion, String sa);
 
 	public String getAccountID() {

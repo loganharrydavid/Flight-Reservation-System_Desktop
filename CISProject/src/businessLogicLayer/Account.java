@@ -17,7 +17,6 @@ public class Account implements Comparable<Account> {
 	private String lastName;
 	private String address;
 	private String state;
-	private String city;
 	private String email;
 	private int zipCode;
 	private int ssn;
@@ -38,7 +37,7 @@ public class Account implements Comparable<Account> {
 	// Creates an Account object. Customer Accounts are set to is_Admin = false; and
 	// Admin are set to true;
 
-	public Account(String firstname, String lastName, String address, String email, String State, String city,
+	public Account(String firstname, String lastName, String address, String email, String State,
 			int zipCode, int ssn, String userName, String password, String sq, String sa) {
 
 		this.firstName = firstname;
@@ -46,7 +45,6 @@ public class Account implements Comparable<Account> {
 		this.userName = userName;
 		this.password = password;
 		this.address = address;
-		this.city = city;
 		this.email = email;
 		this.state = State;
 		this.zipCode = zipCode;
@@ -57,10 +55,10 @@ public class Account implements Comparable<Account> {
 	}
 
 	public static void generateAccount(String fname, String lname, String address, String email, String state,
-			String city, int zip, int ssn, String un, String pword, String secQuestion, String sa)
+			int zip, int ssn, String un, String pword, String secQuestion, String sa)
 			throws DuplicateAccountException {
 
-		Account acct = new Account(fname, lname, address, email, state, city, zip, ssn, un, pword, secQuestion, sa);
+		Account acct = new Account(fname, lname, address, email, state, zip, ssn, un, pword, secQuestion, sa);
 
 		LoginDBO search = new LoginDBO();
 
@@ -184,10 +182,6 @@ public class Account implements Comparable<Account> {
 		return ssn;
 	}
 
-	public String getCity() {
-		return city;
-	}
-
 	public String getUserName() {
 		return userName;
 	}
@@ -257,10 +251,6 @@ public class Account implements Comparable<Account> {
 
 	}
 
-	public void setCity(String city) {
-		this.city = city;
-
-	}
 
 	@Override
 	public String toString() {

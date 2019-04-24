@@ -1,10 +1,6 @@
 package businessLogicLayer;
 
 import databaseInterfaceLayer.DatabaseObjectJJ;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import databaseInterfaceLayer.*;
 
@@ -78,57 +74,6 @@ public class Account implements Comparable<Account> {
 
 	}
 
-	// retrieves an Account from the DB. Use any String field in the Account to tell
-	// it which one to return
-	public static void returnAccountFromDatabase(String un) {
-
-		final String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB";
-		final String databaseUsername = "root";
-		final String databasePassword = "1234abcd";
-
-		ArrayList<Object> account = new ArrayList<>();
-
-		try {
-
-			Class.forName("java.sql.Driver");
-
-			Connection connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
-			
-
-			PreparedStatement preparedStatement = connection
-					.prepareStatement("SELECT * FROM account WHERE username=" + "'" + un + "'");
-
-			ResultSet res = preparedStatement.executeQuery();
-
-			while (res.next()) {
-
-				
-				account.add(res.getString("username"));
-				account.add(res.getString("password"));
-				account.add(res.getString("firstname"));
-				account.add(res.getString("lastname"));
-				account.add(res.getString("address"));
-				account.add(res.getString("state"));
-				account.add(res.getString("city"));
-				account.add(res.getString("email"));
-				account.add(res.getInt("zipcode"));
-				account.add(res.getInt("ssn"));
-				account.add(res.getString("security_q"));
-				account.add(res.getString("security_a"));
-				account.add(res.getBoolean("is_Admin"));
-
-			}
-			connection.close();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-
-		}
-		for (int i = 0; i < account.size(); i++) {
-			System.out.println(account.get(i));
-		}
-
-	}
 
 	public String[] getFlights() {
 

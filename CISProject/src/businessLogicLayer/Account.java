@@ -39,7 +39,8 @@ public class Account implements Comparable<Account> {
 
 	public Account(String firstname, String lastName, String address, String email, String State,
 			int zipCode, int ssn, String userName, String password, String sq, String sa) {
-
+		 
+		
 		this.firstName = firstname;
 		this.lastName = lastName;
 		this.userName = userName;
@@ -51,6 +52,7 @@ public class Account implements Comparable<Account> {
 		this.ssn = ssn;
 		this.securityQuestion = sq;
 		this.securityAnswer = sa;
+		
 
 	}
 
@@ -73,12 +75,6 @@ public class Account implements Comparable<Account> {
 			input.setNewAccountValues(acct);
 
 		}
-
-	}
-
-	public static void main(String[] args) {
-
-		returnAccountFromDatabase("name");
 
 	}
 
@@ -145,111 +141,109 @@ public class Account implements Comparable<Account> {
 
 		return a;
 	}
-
-	public String getPassword() {
-		return this.password;
-	}
-
 	public int getAccountID() {
 		return accountID;
+	}
+	
+
+	public void setAccountID(int accountID) {
+		
+		this.accountID = accountID;
+	}
+
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getFirstName() {
 		return firstName;
 	}
 
-	public String getLastName() {
-		return lastName;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public int getZipCode() {
-		return zipCode;
-	}
-
-	public int getSsn() {
-		return ssn;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public String getSecurityQuestion() {
-		return securityQuestion;
-	}
-
-	public String getSecurityAnswer() {
-		return securityAnswer;
-	}
-
-	public void setUserName(String username) {
-		this.userName = username;
-	}
-
-	public static boolean isAdmin() {
-		return is_Admin;
-	}
-
-	public void setAccountID(int accountID) {
-		this.accountID = accountID;
-	}
-
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
 	}
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
+	public String getAddress() {
+		return address;
+	}
+
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public String getState() {
+		return state;
 	}
 
 	public void setState(String state) {
 		this.state = state;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public int getZipCode() {
+		return zipCode;
 	}
 
 	public void setZipCode(int zipCode) {
 		this.zipCode = zipCode;
 	}
 
+	public int getSsn() {
+		return ssn;
+	}
+
 	public void setSsn(int ssn) {
 		this.ssn = ssn;
+	}
+
+	public String getSecurityQuestion() {
+		return securityQuestion;
 	}
 
 	public void setSecurityQuestion(String securityQuestion) {
 		this.securityQuestion = securityQuestion;
 	}
 
+	public String getSecurityAnswer() {
+		return securityAnswer;
+	}
+
 	public void setSecurityAnswer(String securityAnswer) {
 		this.securityAnswer = securityAnswer;
 	}
 
-	public void setFlights(ArrayList<Flight> flights) {
-		this.flights = flights;
+	public boolean isIs_Admin() {
+		return is_Admin;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-
-	}
 
 
 	@Override

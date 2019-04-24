@@ -27,28 +27,26 @@ public class DatabaseObjectJJ {
 
 			 connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
 
-			String sqlQuery = " INSERT INTO account(username,password,firstname,lastname,address,state,email,zipcode,ssn,security_q,security_a)"
-				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?);";
 
-			// the prepared statement is more efficient to execute the same or similar
-			// database statement repeatedly
-			PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+				String sqlQuery = " INSERT INTO account(username,password,firstname,lastname,address,state,email,zipcode,ssn,security_q,security_a)"
+					+ " VALUES(?,?,?,?,?,?,?,?,?,?,?);";
 
-			preparedStatement.setString(1, account.getUserName());
-			preparedStatement.setString(2, account.getPassword());
-			preparedStatement.setString(3, account.getFirstName());
-			preparedStatement.setString(4, account.getLastName());
-			preparedStatement.setString(5, account.getAddress());
-			preparedStatement.setString(6, account.getState());
-			preparedStatement.setString(7, account.getEmail());
-			preparedStatement.setInt(8, account.getZipCode());
-			preparedStatement.setInt(9, account.getSsn());
-			preparedStatement.setString(10, account.getSecurityQuestion());
-			preparedStatement.setString(11, account.getSecurityAnswer());
+				// the prepared statement is more efficient to execute the same or similar
+				// database statement repeatedly
+				PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
 
-			preparedStatement.executeUpdate();
-			
-			
+				preparedStatement.setString(1, account.getUserName());
+				preparedStatement.setString(2, account.getPassword());
+				preparedStatement.setString(3, account.getFirstName());
+				preparedStatement.setString(4, account.getLastName());
+				preparedStatement.setString(5, account.getAddress());
+				preparedStatement.setString(6, account.getState());
+				preparedStatement.setString(7, account.getEmail());
+				preparedStatement.setInt(8, account.getZipCode());
+				preparedStatement.setInt(9, account.getSsn());
+				preparedStatement.setString(10, account.getSecurityQuestion());
+				preparedStatement.setString(11, account.getSecurityAnswer());
+
 
 			connection.close();
 

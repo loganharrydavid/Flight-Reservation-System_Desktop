@@ -20,8 +20,12 @@ public class InsertDBO {
 	public void insertBooking() {
 	
 	}
+	public static void main(String[] args) {
+		insertAccount(new Account( "username","password","firstname","lastname","address",
+				"state","email",30098,123456,"security_q","security_a"));
+	}
 	
-	public void insertAccount(Account account) {
+	public static void insertAccount(Account account) {
 
 		try {
 		

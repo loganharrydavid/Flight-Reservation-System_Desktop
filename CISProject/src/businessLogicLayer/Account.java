@@ -2,6 +2,8 @@ package businessLogicLayer;
 
 import databaseInterfaceLayer.InsertDBO;
 import java.util.ArrayList;
+import java.util.Random;
+
 import databaseInterfaceLayer.*;
 
 public class Account implements Comparable<Account> {
@@ -91,11 +93,9 @@ public class Account implements Comparable<Account> {
 
 	public void setAccountID() {
 
-		int ID = 0;
-
-		for (int i = 0; i <= 1000000; i++) {
-			ID += (int) (Math.random() * 10 + 1);
-		}
+		Random rand = new Random();
+		
+		int ID = rand.nextInt(100000);
 
 		this.accountID = ID;
 	}

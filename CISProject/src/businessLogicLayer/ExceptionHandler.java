@@ -1,6 +1,7 @@
 package businessLogicLayer;
 
 import businessLogicLayer.Account;
+import businessLogicLayer.loginObject;
 
 public class ExceptionHandler extends Exception{
 	
@@ -11,7 +12,7 @@ public class ExceptionHandler extends Exception{
 	
 	//this method is called when a new user tries to register an account but before it is stored in the database
 	//the purpose is to check the format of their input (i.e.) email address, SSN, etc...
-	public void checkRegistration(Account account) {
+	public static void checkRegistration(Account account) {
 		
 		try {
 		
@@ -92,6 +93,7 @@ public class ExceptionHandler extends Exception{
 		
 			super(message);
 		}
+		
 	}
 	 class UserNameException extends ExceptionHandler{
 		

@@ -67,7 +67,7 @@ public class Account implements Comparable<Account> {
 		} else {
 			InsertDBO input = new InsertDBO();
 
-			input.setNewAccountValues(acct);
+			input.insertAccount(acct);
 
 		}
 

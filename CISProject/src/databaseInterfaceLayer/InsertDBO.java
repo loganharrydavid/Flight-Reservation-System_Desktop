@@ -13,7 +13,15 @@ public class InsertDBO {
 	
 	public ArrayList<Object> returnList;
 	
-	public void setNewAccountValues(Account account) {
+	
+	public void insertFlight() {
+		
+	}
+	public void insertBooking() {
+		
+	}
+	
+	public void insertAccount(Account account) {
 
 		try {
 		

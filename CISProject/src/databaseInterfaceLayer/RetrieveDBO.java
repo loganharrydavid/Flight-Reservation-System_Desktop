@@ -7,11 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.DatabaseMetaData;
 
-public class DBO {
-	public static void main(String[] args) {
-		
-		returnAccountFromDatabase("name");
-		}
+public class RetrieveDBO {
 
 	static final String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB";
 	static final String databaseUsername = "root";

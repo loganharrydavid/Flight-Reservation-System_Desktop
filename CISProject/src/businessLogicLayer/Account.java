@@ -1,6 +1,6 @@
 package businessLogicLayer;
 
-import databaseInterfaceLayer.DatabaseObjectJJ;
+import databaseInterfaceLayer.InsertDBO;
 import java.util.ArrayList;
 import databaseInterfaceLayer.*;
 
@@ -65,7 +65,7 @@ public class Account implements Comparable<Account> {
 			throw new DuplicateAccountException("An account with this email address already exists");
 
 		} else {
-			DatabaseObjectJJ input = new DatabaseObjectJJ();
+			InsertDBO input = new InsertDBO();
 
 			input.setNewAccountValues(acct);
 

@@ -84,10 +84,10 @@ public class Registration extends Application {
 				
 		// Zip Code
 		zipCode = new Label(" Zip Code: ");
-		GridPane.setConstraints(zipCode, 0, 10);
+		GridPane.setConstraints(zipCode, 0, 8);
 		zipCodeInput = new TextField();
 		zipCodeInput.setPromptText(" Enter Zip Code ");
-		GridPane.setConstraints(zipCodeInput, 0, 11);
+		GridPane.setConstraints(zipCodeInput, 0, 9);
 	
 		// UserName
 		username = new Label("Enter Username:");
@@ -139,7 +139,7 @@ public class Registration extends Application {
 		
 		
 		submitButton = new Button(" Submit Registration ");
-	    GridPane.setConstraints(submitButton, 0, 12);
+	    GridPane.setConstraints(submitButton, 0, 11);
 		//Need to add Security Answer
 		
 		grid.getChildren().addAll(firstName, firstNameInput, lastName, lastNameInput, address,

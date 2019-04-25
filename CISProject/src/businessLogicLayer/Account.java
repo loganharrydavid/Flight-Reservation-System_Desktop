@@ -18,7 +18,7 @@ public class Account implements Comparable<Account> {
 	private int ssn;
 	private String securityQuestion;
 	private String securityAnswer;
-	private static boolean is_Admin = false;
+	public static boolean is_Admin = false;
 	private ArrayList<Flight> flights = new ArrayList<>();
 
 	public Account() {
@@ -33,10 +33,9 @@ public class Account implements Comparable<Account> {
 	// Creates an Account object. Customer Accounts are set to is_Admin = false; and
 	// Admin are set to true;
 
-	public Account(String firstname, String lastName, String address, String email, String State,
-			int zipCode, int ssn, String userName, String password, String sq, String sa) {
-		 
-		
+	public Account(String userName,String password,String firstname, String lastName, String address,String State,
+			String email, int zipCode, int ssn,String sq, String sa) {
+
 		this.firstName = firstname;
 		this.lastName = lastName;
 		this.userName = userName;
@@ -48,15 +47,15 @@ public class Account implements Comparable<Account> {
 		this.ssn = ssn;
 		this.securityQuestion = sq;
 		this.securityAnswer = sa;
-		
+		setAccountID();
 
 	}
 
-	public static void generateAccount(String fname, String lname, String address, String email, String state,
-			int zip, int ssn, String un, String pword, String secQuestion, String sa)
-			throws DuplicateAccountException {
+	// called from Registration to create a new users account
+	public static void generateAccount(String fname, String lname, String address, String email, String state, int zip,
+			int ssn, String un, String pword, String secQuestion, String sa) throws DuplicateAccountException {
 
-		Account acct = new Account(fname, lname, address, email, state, zip, ssn, un, pword, secQuestion, sa);
+		Account acct = new Account(un, pword,fname, lname, address, email, state, zip, ssn, secQuestion, sa);
 
 		LoginDBO search = new LoginDBO();
 
@@ -74,7 +73,6 @@ public class Account implements Comparable<Account> {
 
 	}
 
-
 	public String[] getFlights() {
 
 		String[] a = new String[this.flights.size()];
@@ -86,16 +84,21 @@ public class Account implements Comparable<Account> {
 
 		return a;
 	}
+
 	public int getAccountID() {
 		return accountID;
 	}
-	
 
-	public void setAccountID(int accountID) {
-		
-		this.accountID = accountID;
+	public void setAccountID() {
+
+		int ID = 0;
+
+		for (int i = 0; i <= 100000; i++) {
+			ID += (int) (1 + Math.random() * 10);
+		}
+
+		this.accountID = ID;
 	}
-
 
 	public String getUserName() {
 		return userName;
@@ -188,8 +191,6 @@ public class Account implements Comparable<Account> {
 	public boolean isIs_Admin() {
 		return is_Admin;
 	}
-
-
 
 	@Override
 	public String toString() {

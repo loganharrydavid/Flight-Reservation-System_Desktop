@@ -93,8 +93,8 @@ public class Account implements Comparable<Account> {
 
 		int ID = 0;
 
-		for (int i = 0; i <= 100000; i++) {
-			ID += (int) (1 + Math.random() * 10);
+		for (int i = 0; i <= 1000000; i++) {
+			ID += (int) (Math.random() * 10 + 1);
 		}
 
 		this.accountID = ID;

@@ -18,7 +18,7 @@ public class InsertDBO {
 		
 	}
 	public void insertBooking() {
-		
+	
 	}
 	
 	public void insertAccount(Account account) {

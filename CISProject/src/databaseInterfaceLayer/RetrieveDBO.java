@@ -5,9 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.sql.DatabaseMetaData;
+
 
 public class RetrieveDBO {
+	
 
 	static final String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB";
 	static final String databaseUsername = "root";
@@ -15,7 +16,7 @@ public class RetrieveDBO {
 	
 	// retrieves an Account from the DB. Use any String field in the Account to tell
 		// it which one to return
-		public static void returnAccountFromDatabase(String un) {
+		public static void retrieveAccount(String un) {
 
 
 			ArrayList<Object> account = new ArrayList<>();
@@ -33,7 +34,8 @@ public class RetrieveDBO {
 				ResultSet res = preparedStatement.executeQuery();
 
 				while (res.next()) {
-
+					
+					account.add(res.getInt("account_id"));
 					account.add(res.getString("username"));
 					account.add(res.getString("password"));
 					account.add(res.getString("firstname"));

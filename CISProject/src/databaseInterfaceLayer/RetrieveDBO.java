@@ -14,8 +14,8 @@ public class RetrieveDBO {
 	static final String databaseUsername = "root";
 	static final String databasePassword = "1234abcd";
 	
-	// retrieves an Account from the DB. Use any String field in the Account to tell
-		// it which one to return
+	// retrieves an Account from the DB. Use any username in the Account to tell
+	// it which one to return
 		public static void retrieveAccount(String un) {
 
 
@@ -60,6 +60,12 @@ public class RetrieveDBO {
 				System.out.println(account.get(i));
 			}
 
+		}
+		public static void retrieveFlight() {
+			
+		}
+		public static void retrieveBooking() {
+			
 		}
 		
 }

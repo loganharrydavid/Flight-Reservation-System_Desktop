@@ -56,7 +56,7 @@ public class Flight implements Comparable<Flight> {
 		
 		Random rand = new Random();
 		
-		int ID = rand.nextInt(1000);
+		int ID = rand.nextInt(9999);
 
 		this.flightNumber = ID;
 	}

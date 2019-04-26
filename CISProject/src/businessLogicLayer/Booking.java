@@ -1,5 +1,6 @@
 package businessLogicLayer;
 
+import java.util.Random;
 
 public class Booking {
 	
@@ -36,8 +37,13 @@ public void setFlight_number(int flight_number) {
 public int getTicketNumber() {
 	return ticketNumber;
 }
-public void setTicketNumber(int ticketNumber) {
-	this.ticketNumber = ticketNumber;
+public void setTicketNumber() {
+	
+	Random rand = new Random();
+	
+	int tkn = rand.nextInt(999);
+	
+	this.ticketNumber = tkn;
 }
 public int getNumberOfPassengers() {
 	return numberOfPassengers;

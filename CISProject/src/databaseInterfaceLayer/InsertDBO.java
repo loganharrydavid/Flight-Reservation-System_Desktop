@@ -72,7 +72,7 @@ public class InsertDBO {
 			preparedStatement.setInt(1, booking.getTicketNumber());
 			preparedStatement.setInt(2, booking.getFlight_number());
 			preparedStatement.setInt(3, booking.getAccount_id());
-			preparedStatement.setInt(4, booking.getNumberOfPassengers());
+			
 			
 			
 

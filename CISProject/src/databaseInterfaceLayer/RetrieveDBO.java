@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import businessLogicLayer.Flight;
 
 
 public class RetrieveDBO {
@@ -20,7 +21,7 @@ public class RetrieveDBO {
 
 
 			ArrayList<Object> account = new ArrayList<>();
-			
+	//public OberservableList<Account> setAccount
 			try {
 
 				Class.forName("java.sql.Driver");
@@ -61,9 +62,47 @@ public class RetrieveDBO {
 			}
 
 		}
-		public static void retrieveFlight() {
+		public static void retrieveFlight(Flight flightNumber) {
 			
-		}
+			ArrayList<Object> flight = new ArrayList<>();
+			
+			//public OberservableList<Account> setAccount
+					try {
+
+						Class.forName("java.sql.Driver");
+
+						Connection connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
+						
+						PreparedStatement preparedStatement = connection
+								.prepareStatement("SELECT * FROM flights WHERE flight_number=" + "'" + flightNumber + "'");
+						
+					    
+						ResultSet res = preparedStatement.executeQuery();
+
+						while (res.next()) {
+							
+							flight.add(res.getInt("flight_number"));
+							flight.add(res.getString("depature_city"));
+							flight.add(res.getString("destination_city"));
+							flight.add(res.getString("depart_time"));
+							flight.add(res.getString("arrive_time"));
+							flight.add(res.getString("flight_date"));
+							flight.add(res.getInt("num_seats"));
+							
+						}
+						
+						connection.close();
+
+					} catch (Exception e1) {
+						e1.printStackTrace();
+
+					}
+					for (int i = 0; i < flight.size(); i++) {
+						System.out.println(flight.get(i));
+					}
+
+				}
+			
 		public static void retrieveBooking() {
 			
 		}

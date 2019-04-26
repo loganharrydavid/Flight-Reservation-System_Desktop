@@ -74,19 +74,7 @@ public class Account implements Comparable<Account> {
 		}
 
 	}
-
-	public String[] getFlights() {
-
-		String[] a = new String[this.flights.size()];
-
-		for (int i = 0; i < this.flights.size(); i++) {
-
-			a[i] += this.flights.get(i);
-		}
-
-		return a;
-	}
-
+	
 	public int getAccountID() {
 		return accountID;
 	}

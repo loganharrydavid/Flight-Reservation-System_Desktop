@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import businessLogicLayer.Account;
 import businessLogicLayer.Flight;
-import businessLogicLayer.booking;
+import businessLogicLayer.Booking;
 
 public class InsertDBO {
 	// location of database //set verify certificate to false to not use SSL to get
@@ -14,7 +14,9 @@ public class InsertDBO {
 	static final String databasePassword = "1234abcd";
 
 	public ArrayList<Object> returnList;
-
+	
+	
+	//Method to insert a new flight into the database
 	public void insertFlight(Flight flight) {
 		try {
 
@@ -50,11 +52,43 @@ public class InsertDBO {
 	}
 
 	
+	//Method to insert new booking in the database
+	public void insertBooking(Booking booking) {
+		
+		try {
 
-	public void insertBooking() {
+			Class.forName("java.sql.Driver");
+
+			System.out.println("database connected! ");
+
+			Connection connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
+
+			String sqlQuery = "INSERT INTO bookedflights(ticket_number,flight_number,acount_id,num_passengers)" 
+			+ " VALUES(?,?,?,?,?,?,?)";
+
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+
+			preparedStatement.setInt(1, booking.getTicketNumber());
+			preparedStatement.setInt(2, booking.getFlight_number());
+			preparedStatement.setInt(3, booking.getAccount_id());
+			preparedStatement.setInt(4, booking.getNumberOfPassengers());
+			
+			
+
+			preparedStatement.executeUpdate();
+
+			connection.close();
+
+		} catch (Exception e) {
+			System.out.println("something messed up in database! :-(");
+			e.printStackTrace();
+		}
+
+	
 
 	}
-
+	//Method to call to insert a new account into the databse
 	public void insertAccount(Account account) {
 
 		try {

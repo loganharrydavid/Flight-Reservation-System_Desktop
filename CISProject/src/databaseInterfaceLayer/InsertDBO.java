@@ -15,7 +15,7 @@ public class InsertDBO {
 
 	public ArrayList<Object> returnList;
 
-	public static void insertFlight(Flight flight) {
+	public void insertFlight(Flight flight) {
 		try {
 
 			Class.forName("java.sql.Driver");

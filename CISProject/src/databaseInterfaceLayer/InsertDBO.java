@@ -63,8 +63,9 @@ public class InsertDBO {
 
 			Connection connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
 
-			String sqlQuery = "INSERT INTO bookedflights(ticket_number,flight_number,acount_id,num_passengers)" 
-			+ " VALUES(?,?,?,?,?,?,?)";
+			String sqlQuery = "INSERT INTO bookedflights(ticket_number,flight_number,acount_id,num_passengers,flight_date,"
+					+ "flight_time,passenger_username)" 
+			+ " VALUES(?,?,?,?,?,?)";
 
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
@@ -72,6 +73,9 @@ public class InsertDBO {
 			preparedStatement.setInt(1, booking.getTicketNumber());
 			preparedStatement.setInt(2, booking.getFlight_number());
 			preparedStatement.setInt(3, booking.getAccount_id());
+			preparedStatement.setString(4, booking.getFlight_date());
+			preparedStatement.setString(5, booking.getFlight_time());
+			preparedStatement.setString(6, booking.getPassenger_userName());
 			
 			
 			
@@ -80,9 +84,9 @@ public class InsertDBO {
 
 			connection.close();
 
-		} catch (Exception e) {
+		} catch (Exception e1) {
 			System.out.println("something messed up in database! :-(");
-			e.printStackTrace();
+			e1.printStackTrace();
 		}
 
 	
@@ -124,9 +128,9 @@ public class InsertDBO {
 
 			connection.close();
 
-		} catch (Exception e) {
+		} catch (Exception e2) {
 			System.out.println("something messed up in database! :-(");
-			e.printStackTrace();
+			e2.printStackTrace();
 		}
 
 	}

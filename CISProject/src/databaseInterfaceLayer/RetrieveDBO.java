@@ -15,13 +15,18 @@ public class RetrieveDBO {
 	static final String databaseUsername = "root";
 	static final String databasePassword = "1234abcd";
 	
+
+	
+	public static void main(String[] args) {
+		
+	}
 	// retrieves an Account from the DB. Use any user_name in the Account to tell
 	// it which one to return
 		public static void retrieveAccount(String un) {
 
 
 			ArrayList<Object> account = new ArrayList<>();
-	//public OberservableList<Account> setAccount
+	//public OberservableList<Account> getAccount
 			try {
 
 				Class.forName("java.sql.Driver");
@@ -62,11 +67,11 @@ public class RetrieveDBO {
 			}
 
 		}
-		public static void retrieveFlight(Flight flightNumber) {
+		public static void retrieveFlight(int flightnum) {
 			
-			ArrayList<Object> flight = new ArrayList<>();
+			ArrayList<Object> flights = new ArrayList<>();
 			
-			//public OberservableList<Account> setAccount
+			//public OberservableList<Account> getFlight
 					try {
 
 						Class.forName("java.sql.Driver");
@@ -74,20 +79,20 @@ public class RetrieveDBO {
 						Connection connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
 						
 						PreparedStatement preparedStatement = connection
-								.prepareStatement("SELECT * FROM flights WHERE flight_number=" + "'" + flightNumber + "'");
+								.prepareStatement("SELECT * FROM flights WHERE flight_number=" + "'" + flightnum + "'");
 						
 					    
-						ResultSet res = preparedStatement.executeQuery();
+						ResultSet rs = preparedStatement.executeQuery();
 
-						while (res.next()) {
+						while (rs.next()) {
 							
-							flight.add(res.getInt("flight_number"));
-							flight.add(res.getString("depature_city"));
-							flight.add(res.getString("destination_city"));
-							flight.add(res.getString("depart_time"));
-							flight.add(res.getString("arrive_time"));
-							flight.add(res.getString("flight_date"));
-							flight.add(res.getInt("num_seats"));
+							flights.add(rs.getInt("flight_number"));
+							flights.add(rs.getString("depature_city"));
+							flights.add(rs.getString("destination_city"));
+							flights.add(rs.getString("depart_time"));
+							flights.add(rs.getString("arrive_time"));
+							flights.add(rs.getString("flight_date"));
+							flights.add(rs.getInt("num_seats"));
 							
 						}
 						
@@ -97,15 +102,56 @@ public class RetrieveDBO {
 						e1.printStackTrace();
 
 					}
-					for (int i = 0; i < flight.size(); i++) {
-						System.out.println(flight.get(i));
+					for (int i = 0; i < flights.size(); i++) {
+						System.out.println(flights.get(i));
 					}
 
 				}
 			
-		public static void retrieveBooking() {
+		public static void retrieveBooking(String passenger_uName) {
+			
+				ArrayList<Object> booking = new ArrayList<>();
+			
+				//public OberservableList<Account> getBooking
+					try {
+
+						Class.forName("java.sql.Driver");
+
+						Connection connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
+						
+						PreparedStatement preparedStatement = connection
+								.prepareStatement("SELECT * FROM flights WHERE flight_number=" + "'" + passenger_uName + "'");
+						
+					    
+						ResultSet res = preparedStatement.executeQuery();
+
+						while (res.next()) {
+							
+							booking.add(res.getInt("flight_number"));
+							booking.add(res.getString("depature_city"));
+							booking.add(res.getString("destination_city"));
+							booking.add(res.getString("depart_time"));
+							booking.add(res.getString("arrive_time"));
+							
+							
+						}
+						
+						connection.close();
+
+					} catch (Exception e1) {
+						e1.printStackTrace();
+
+					}
+					for (int i = 0; i < booking.size(); i++) {
+						System.out.println(booking.get(i));
+					}
+
+				}
+			
+			
+			
+			
+			
 			
 		}
-		
-}
 		

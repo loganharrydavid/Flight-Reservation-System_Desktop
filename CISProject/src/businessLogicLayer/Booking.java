@@ -9,12 +9,13 @@ public class Booking {
 	private int flight_number;
 	private String flight_date;
 	private String flight_time;
-
+	private String passenger_userName;
+	
 	public Booking() {
 
 	}
 
-	public Booking(int acctID, int flightNum) {
+	public Booking(int acctID, int flightNum  ) {
 
 		setTicketNumber();
 		this.account_id = acctID;
@@ -65,5 +66,12 @@ public class Booking {
 
 	public void setFlight_time(String flight_time) {
 		this.flight_time = flight_time;
+	}
+	public String getPassenger_userName() {
+		return passenger_userName;
+	}
+
+	public void setPassenger_userName(String passenger_userName) {
+		this.passenger_userName = passenger_userName;
 	}
 }

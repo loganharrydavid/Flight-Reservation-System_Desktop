@@ -95,7 +95,7 @@ public class Account implements Comparable<Account> {
 
 		Random rand = new Random();
 		
-		int ID = rand.nextInt(100000);
+		int ID = rand.nextInt(10000);
 
 		this.accountID = ID;
 	}

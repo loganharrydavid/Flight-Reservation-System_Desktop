@@ -2,7 +2,7 @@ package businessLogicLayer;
 
 import java.util.ArrayList;
 import businessLogicLayer.Account;
-
+import java.util.Random;
 
 public class Flight implements Comparable<Flight> {
 	
@@ -18,11 +18,11 @@ public class Flight implements Comparable<Flight> {
 	public Flight() {
 
 	}
-
-	public Flight(String departureCity, String destinationCity, String departTime, String arriveTime, String flightDate,
-			int flightNumber,int numberOfSeats) {
+		//Creates a flight and sets a random flight number
+	public Flight(String departureCity, String destinationCity, String departTime, String arriveTime, 
+			String flightDate,int numberOfSeats) {
 		
-		this.flightNumber = flightNumber;
+		setFlightNumber();
 		this.departureCity = departureCity;
 		this.destinationCity = destinationCity;
 		this.departTime = departTime;
@@ -30,6 +30,11 @@ public class Flight implements Comparable<Flight> {
 		this.flightDate = flightDate;
 		this.numberOfSeats = numberOfSeats;
 
+	}
+	//called from GUI to create flight object and insert to database
+	public static void generateFlight() {
+		
+		
 	}
 	
 	public String getPassengers(ArrayList<Account> passengers) {
@@ -46,6 +51,14 @@ public class Flight implements Comparable<Flight> {
 		}
 			
 		return toPrint;
+	}
+	public void setFlightNumber() {
+		
+		Random rand = new Random();
+		
+		int ID = rand.nextInt(1000);
+
+		this.flightNumber = ID;
 	}
 	
 	public void bookFlight(Account account) {

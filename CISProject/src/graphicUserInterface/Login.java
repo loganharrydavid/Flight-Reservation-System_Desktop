@@ -24,6 +24,8 @@ public class Login extends Application {
 	Button loginButton;
 	Color color;
 	Button SignUpButton;
+	public String userName;
+	public String pass;
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -81,8 +83,11 @@ public class Login extends Application {
 	});
 	
 	loginButton.setOnAction(e->{
+		
+		userName = usernameInput.getText();
+		pass = passwordInput.getText();
 
-		loginObject login = new loginObject(usernameInput.getText(),passwordInput.getText());
+		loginObject login = new loginObject(userName,pass);
 		
 		if(login.executeLogin() == true) {
 				try {

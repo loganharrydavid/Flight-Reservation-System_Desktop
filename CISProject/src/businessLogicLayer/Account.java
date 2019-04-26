@@ -1,10 +1,11 @@
 package businessLogicLayer;
 
-import databaseInterfaceLayer.InsertDBO;
+import databaseInterfaceLayer.DatabaseObjectJJ;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Random;
-import businessLogicLayer.ExceptionHandler;
-
 import databaseInterfaceLayer.*;
 
 public class Account implements Comparable<Account> {
@@ -16,12 +17,13 @@ public class Account implements Comparable<Account> {
 	private String lastName;
 	private String address;
 	private String state;
+	private String city;
 	private String email;
 	private int zipCode;
 	private int ssn;
 	private String securityQuestion;
 	private String securityAnswer;
-	public static boolean is_Admin = false;
+	private static boolean is_Admin = false;
 	private ArrayList<Flight> flights = new ArrayList<>();
 
 	public Account() {
@@ -36,30 +38,30 @@ public class Account implements Comparable<Account> {
 	// Creates an Account object. Customer Accounts are set to is_Admin = false; and
 	// Admin are set to true;
 
-	public Account(String userName,String password,String firstname, String lastName, String address,String State,
-			String email, int zipCode, int ssn,String sq, String sa) {
+	public Account(String firstname, String lastName, String address, String email, String State, String city,
+			int zipCode, int ssn, String userName, String password, String sq, String sa) {
 
 		this.firstName = firstname;
 		this.lastName = lastName;
 		this.userName = userName;
 		this.password = password;
 		this.address = address;
+		this.city = city;
 		this.email = email;
 		this.state = State;
 		this.zipCode = zipCode;
 		this.ssn = ssn;
 		this.securityQuestion = sq;
 		this.securityAnswer = sa;
-		setAccountID();
 
 	}
 
-	// called from Registration to create a new users account
-	public static void generateAccount(String fname, String lname, String address, String email, String state, int zip,
-			int ssn, String un, String pword, String secQuestion, String sa) throws DuplicateAccountException {
-		
-		Account acct = new Account(un, pword,fname, lname, address, email, state, zip, ssn, secQuestion, sa);
-		
+	public static void generateAccount(String fname, String lname, String address, String email, String state,
+			String city, int zip, int ssn, String un, String pword, String secQuestion, String sa)
+			throws DuplicateAccountException {
+
+		Account acct = new Account(fname, lname, address, email, state, city, zip, ssn, un, pword, secQuestion, sa);
+
 		LoginDBO search = new LoginDBO();
 
 		Boolean result = search.searchFor(acct.getEmail());
@@ -68,117 +70,196 @@ public class Account implements Comparable<Account> {
 			throw new DuplicateAccountException("An account with this email address already exists");
 
 		} else {
-			InsertDBO input = new InsertDBO();
+			DatabaseObjectJJ input = new DatabaseObjectJJ();
 
-			input.insertAccount(acct);
+			input.setNewAccountValues(acct);
 
 		}
 
 	}
-	
-	public int getAccountID() {
-		return accountID;
+
+	public static void main(String[] args) {
+
+		returnAccountFromDatabase("name");
+
 	}
 
-	public void setAccountID() {
+	// retrieves an Account from the DB. Use any String field in the Account to tell
+	// it which one to return
+	public static void returnAccountFromDatabase(String un) {
 
-		Random rand = new Random();
-		
-		int ID = rand.nextInt(99999);
+		final String databaseURL = "jdbc:mysql://localhost:3306/JavaJesusDB";
+		final String databaseUsername = "root";
+		final String databasePassword = "1234abcd";
 
-		this.accountID = ID;
+		ArrayList<Object> account = new ArrayList<>();
+
+		try {
+
+			Class.forName("java.sql.Driver");
+
+			Connection connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
+			
+
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("SELECT * FROM account WHERE username=" + "'" + un + "'");
+
+			ResultSet res = preparedStatement.executeQuery();
+
+			while (res.next()) {
+
+				
+				account.add(res.getString("username"));
+				account.add(res.getString("password"));
+				account.add(res.getString("firstname"));
+				account.add(res.getString("lastname"));
+				account.add(res.getString("address"));
+				account.add(res.getString("state"));
+				account.add(res.getString("city"));
+				account.add(res.getString("email"));
+				account.add(res.getInt("zipcode"));
+				account.add(res.getInt("ssn"));
+				account.add(res.getString("security_q"));
+				account.add(res.getString("security_a"));
+				account.add(res.getBoolean("is_Admin"));
+
+			}
+			connection.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		for (int i = 0; i < account.size(); i++) {
+			System.out.println(account.get(i));
+		}
+
 	}
 
-	public String getUserName() {
-		return userName;
-	}
+	public String[] getFlights() {
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+		String[] a = new String[this.flights.size()];
+
+		for (int i = 0; i < this.flights.size(); i++) {
+
+			a[i] += this.flights.get(i);
+		}
+
+		return a;
 	}
 
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public int getAccountID() {
+		return accountID;
 	}
 
 	public String getFirstName() {
 		return firstName;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
 	public String getLastName() {
 		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
 	}
 
 	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public String getEmail() {
+		return email;
 	}
 
 	public String getState() {
 		return state;
 	}
 
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public int getZipCode() {
 		return zipCode;
-	}
-
-	public void setZipCode(int zipCode) {
-		this.zipCode = zipCode;
 	}
 
 	public int getSsn() {
 		return ssn;
 	}
 
-	public void setSsn(int ssn) {
-		this.ssn = ssn;
+	public String getCity() {
+		return city;
+	}
+
+	public String getUserName() {
+		return userName;
 	}
 
 	public String getSecurityQuestion() {
 		return securityQuestion;
 	}
 
-	public void setSecurityQuestion(String securityQuestion) {
-		this.securityQuestion = securityQuestion;
-	}
-
 	public String getSecurityAnswer() {
 		return securityAnswer;
+	}
+
+	public void setUserName(String username) {
+		this.userName = username;
+	}
+
+	public static boolean isAdmin() {
+		return is_Admin;
+	}
+
+	public void setAccountID(int accountID) {
+		this.accountID = accountID;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setZipCode(int zipCode) {
+		this.zipCode = zipCode;
+	}
+
+	public void setSsn(int ssn) {
+		this.ssn = ssn;
+	}
+
+	public void setSecurityQuestion(String securityQuestion) {
+		this.securityQuestion = securityQuestion;
 	}
 
 	public void setSecurityAnswer(String securityAnswer) {
 		this.securityAnswer = securityAnswer;
 	}
 
-	public boolean isIs_Admin() {
-		return is_Admin;
+	public void setFlights(ArrayList<Flight> flights) {
+		this.flights = flights;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+
 	}
 
 	@Override

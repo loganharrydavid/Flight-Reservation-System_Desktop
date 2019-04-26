@@ -19,17 +19,6 @@ public class loginObject {
 		this.loginCheck = false;
 	}
 	
-public void checkPassword(String check) throws PasswordException{
-		
-		if(this.getPassword().equals(check)) {
-			setLoginCheck(true);
-			}		
-		else {
-			throw new PasswordException("Something");
-		}
-		
-		}
-	
 	public Boolean executeLogin() {
 		
 		LoginDBO log = new LoginDBO();
@@ -45,6 +34,7 @@ public void checkPassword(String check) throws PasswordException{
 		return loginCheck;		
 	}
 	
+	
 	public String getUsername() {
 		return username;
 	}
@@ -57,5 +47,14 @@ public void checkPassword(String check) throws PasswordException{
 	public void setLoginCheck(Boolean loginCheck) {
 		this.loginCheck = loginCheck;
 	}
-
+	public void checkPassword(String check) throws PasswordException{
+		
+			if(this.getPassword().equals(check)) {
+				setLoginCheck(true);
+				}		
+			else {
+				throw new PasswordException("Something");
+			}
+			
+			}
 			}

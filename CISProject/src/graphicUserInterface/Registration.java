@@ -12,6 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+
 
 public class Registration extends Application {
 	
@@ -22,6 +24,7 @@ public class Registration extends Application {
 	Label address;
 	Label zipCode;
 	Label state;
+	Label city;
 	Label username;
 	Label email;
 	Label passwords;
@@ -34,6 +37,7 @@ public class Registration extends Application {
 	TextField addressInput;
 	TextField zipCodeInput;
 	TextField stateInput;
+	TextField cityInput;
 	TextField userNameInput;
 	TextField emailInput;
 	PasswordField passwordInput;
@@ -42,6 +46,7 @@ public class Registration extends Application {
 	TextField SecurityQuestionInput;
 	TextField SecurityAnswerInput;
 	Button submitButton;
+	Button backButton;
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -84,10 +89,10 @@ public class Registration extends Application {
 				
 		// Zip Code
 		zipCode = new Label(" Zip Code: ");
-		GridPane.setConstraints(zipCode, 0, 8);
+		GridPane.setConstraints(zipCode, 0, 10);
 		zipCodeInput = new TextField();
 		zipCodeInput.setPromptText(" Enter Zip Code ");
-		GridPane.setConstraints(zipCodeInput, 0, 9);
+		GridPane.setConstraints(zipCodeInput, 0, 11);
 	
 		// UserName
 		username = new Label("Enter Username:");
@@ -127,9 +132,14 @@ public class Registration extends Application {
 		// Security Question 
 		SecurityQuestion = new Label (" Security Question ");
 		GridPane.setConstraints(SecurityQuestion,1, 8);
-		SecurityQuestionInput = new TextField();
-		SecurityQuestionInput.setPromptText(" Favorite vication place ");
-		GridPane.setConstraints(SecurityQuestionInput, 1, 9);
+		
+		ChoiceBox<String> choicebox = new ChoiceBox<>();
+		GridPane.setConstraints(choicebox, 1, 9);
+		
+		choicebox.getItems().add(" What is your country Origin ");
+		choicebox.getItems().add(" What is your mother middle name ");
+		choicebox.getItems().add(" What is your first Elemenatry School ");
+		choicebox.getItems().add(" What is your pet name  ");
 		
 		SecurityAnswer = new Label (" Security Answer ");
 		GridPane.setConstraints(SecurityAnswer,1, 10);
@@ -137,18 +147,27 @@ public class Registration extends Application {
 		SecurityAnswerInput.setPromptText(" Answer ");
 		GridPane.setConstraints(SecurityAnswerInput, 1, 11);
 		
+		city = new Label("City:");
+		GridPane.setConstraints(city, 0, 8);
+		cityInput = new TextField();
+		cityInput.setPromptText(" Enter City: ");
+		GridPane.setConstraints(cityInput, 0, 9);
+		
 		
 		submitButton = new Button(" Submit Registration ");
-	    GridPane.setConstraints(submitButton, 0, 11);
+	    GridPane.setConstraints(submitButton, 0, 12);
 		//Need to add Security Answer
-		
+	
+	    backButton = new Button(" <-Back ");
+	    GridPane.setConstraints(backButton, 0, 14);
+	    
 		grid.getChildren().addAll(firstName, firstNameInput, lastName, lastNameInput, address,
 				                 addressInput, zipCode, zipCodeInput,email,emailInput
 				                  ,state, stateInput,username, userNameInput, 
 				                  passwords, passwordInput, confirmPasswords, 
 				                  confirmPasswordInput, SSN, SSNInput,
-				                  SecurityQuestion, SecurityQuestionInput,SecurityAnswer,
-				                  SecurityAnswerInput,submitButton);
+				                  SecurityQuestion, choicebox,SecurityAnswer,
+				                  SecurityAnswerInput,submitButton,city,cityInput, backButton);
 		
 		
 		
@@ -161,7 +180,7 @@ public class Registration extends Application {
 			
 		try {
 				Account.generateAccount(firstNameInput.getText(),lastNameInput.getText(),addressInput.getText(),
-				emailInput.getText(),stateInput.getText(),Integer.parseInt(zipCodeInput.getText()),
+				emailInput.getText(),stateInput.getText(),cityInput.getText(),Integer.parseInt(zipCodeInput.getText()),
 				Integer.parseInt(SSNInput.getText()), userNameInput.getText(), passwordInput.getText(), 
 				SecurityQuestionInput.getText(),SecurityAnswerInput.getText());
 				
@@ -181,6 +200,16 @@ public class Registration extends Application {
 			
 			
 
+		});
+		
+		backButton.setOnAction(e->{ 
+			Login login = new Login();
+			try {
+				login.start(primaryStage);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		});
 		
 		

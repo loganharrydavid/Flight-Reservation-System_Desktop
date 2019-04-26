@@ -24,8 +24,7 @@ public class Login extends Application {
 	Button loginButton;
 	Color color;
 	Button SignUpButton;
-	public String userName;
-	public String pass;
+	Button ForgotPassword;
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -58,12 +57,16 @@ public class Login extends Application {
 	
 	SignUpButton = new Button(" Sign up ");
     GridPane.setConstraints(SignUpButton, 0, 2);
+    
+    ForgotPassword = new Button(" Forgot Passwords");
+    GridPane.setConstraints(ForgotPassword, 0, 3);
+
 	
-	grid.getChildren().addAll(username,usernameInput,password,passwordInput,loginButton,SignUpButton);
+	grid.getChildren().addAll(username,usernameInput,password,passwordInput,loginButton,SignUpButton, ForgotPassword);
 	
 	
 	scene = new Scene(grid, 500,500,Color.AQUA);
-	
+	scene.getStylesheets().add("thing.css");
 	
 	primaryStage.setScene(scene);
 	primaryStage.show();
@@ -71,6 +74,7 @@ public class Login extends Application {
 
 	
 	SignUpButton.setOnAction(e->{
+		
 		
 		Registration reg = new Registration();
 	
@@ -83,11 +87,8 @@ public class Login extends Application {
 	});
 	
 	loginButton.setOnAction(e->{
-		
-		userName = usernameInput.getText();
-		pass = passwordInput.getText();
 
-		loginObject login = new loginObject(userName,pass);
+		loginObject login = new loginObject(usernameInput.getText(),passwordInput.getText());
 		
 		if(login.executeLogin() == true) {
 				try {
@@ -95,9 +96,20 @@ public class Login extends Application {
 					nextScreen.start(primaryStage);
 				} catch (Exception ex) {
 						ex.printStackTrace();	
+						AlertBox.display("Alert!", " Wrong Password try again !");
 				}
-			
 		}});
+	
+ForgotPassword.setOnAction(e->{
+		
+		Passwordrecover pRecovery = new Passwordrecover();
+		try {
+			pRecovery.start(primaryStage);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	});
 	
 	}
     

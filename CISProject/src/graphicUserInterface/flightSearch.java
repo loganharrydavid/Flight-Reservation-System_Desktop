@@ -3,7 +3,9 @@ package graphicUserInterface;
 
 
 	import javafx.application.Application;
-	import javafx.geometry.Pos;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 	import javafx.scene.Scene;
 	import javafx.scene.control.Button;
 	import javafx.scene.control.ChoiceBox;
@@ -15,6 +17,8 @@ package graphicUserInterface;
 	import javafx.scene.paint.Color;
 	import javafx.stage.Stage;
 	import java.time.LocalDate;
+
+import businessLogicLayer.Flight;
 
 	public class flightSearch extends Application {
 
@@ -30,6 +34,7 @@ package graphicUserInterface;
 		Button destinationButton;
 		LocalDate ld;
 		TextField passangerInput;
+		Button backButton;
 		
 		public static void main(String[] args) {
 			launch(args);
@@ -106,11 +111,29 @@ package graphicUserInterface;
 			
 			Button search = new Button(" Search ");
 			GridPane.setConstraints(search, 0, 8);
+			
+			backButton = new Button(" <-Back ");
+			GridPane.setConstraints(backButton, 0, 9);
 
 		
 			
 			grid.getChildren().addAll( depatureCity, choicebox,destinationCity,choicebox1,dp,depatureDate,dp1,returnDate
-					,passanger,passangerInput,search);
+					,passanger,passangerInput,search, backButton);
+		
+			///////////////////////////////////////////////////////////////////////////////
+			
+			
+			//////////////////////////////////////////////////////////////////////////////
+			backButton.setOnAction(e->{ 
+				MainMenu mainmenu = new MainMenu();
+				try {
+					mainmenu.start(primaryStage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			});
+
 
 				
 			scene = new Scene(grid, 600,600, Color.DARKBLUE);

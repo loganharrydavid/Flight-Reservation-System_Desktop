@@ -3,6 +3,7 @@ package businessLogicLayer;
 import databaseInterfaceLayer.InsertDBO;
 import java.util.ArrayList;
 import java.util.Random;
+import businessLogicLayer.ExceptionHandler;
 
 import databaseInterfaceLayer.*;
 
@@ -56,9 +57,9 @@ public class Account implements Comparable<Account> {
 	// called from Registration to create a new users account
 	public static void generateAccount(String fname, String lname, String address, String email, String state, int zip,
 			int ssn, String un, String pword, String secQuestion, String sa) throws DuplicateAccountException {
-
+		
 		Account acct = new Account(un, pword,fname, lname, address, email, state, zip, ssn, secQuestion, sa);
-
+		
 		LoginDBO search = new LoginDBO();
 
 		Boolean result = search.searchFor(acct.getEmail());

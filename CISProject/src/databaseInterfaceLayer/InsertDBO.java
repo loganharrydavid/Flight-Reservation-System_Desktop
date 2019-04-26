@@ -50,10 +50,16 @@ public class InsertDBO {
 		}
 
 	}
-
+	
+	public static void main(String[] args) {
+		Booking testBook = new Booking(2000,3000,"09-22",
+				"9:00am","HgdIV");
+		
+		insertBooking(testBook);
+	}
 	
 	//Method to insert new booking in the database
-	public void insertBooking(Booking booking) {
+	public static void insertBooking(Booking booking) {
 		
 		try {
 
@@ -63,7 +69,7 @@ public class InsertDBO {
 
 			Connection connection = DriverManager.getConnection(databaseURL, databaseUsername, databasePassword);
 
-			String sqlQuery = "INSERT INTO bookedflights(ticket_number,flight_number,acount_id,num_passengers,flight_date,"
+			String sqlQuery = "INSERT INTO bookedflights(ticket_number,flight_number,acount_id,flight_date,"
 					+ "flight_time,passenger_username)" 
 			+ " VALUES(?,?,?,?,?,?)";
 

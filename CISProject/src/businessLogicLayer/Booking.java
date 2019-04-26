@@ -15,11 +15,14 @@ public class Booking {
 
 	}
 
-	public Booking(int acctID, int flightNum  ) {
+	public Booking(int acctID, int flightNum ,String flyDate, String flyTime, String pass_username) {
 
 		setTicketNumber();
 		this.account_id = acctID;
 		this.flight_number = flightNum;
+		this.flight_date = flyDate;
+		this.flight_time = flyTime;
+		this.passenger_userName = pass_username;
 
 	}
 

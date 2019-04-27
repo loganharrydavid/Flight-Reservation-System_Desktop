@@ -17,6 +17,7 @@ public class MainMenu extends Application {
 	GridPane grid;
 	Label whatNext;
 	Button bookFlight;
+	Button backButton;
 	
 public static void main(String[] args) {
 	launch(args);
@@ -33,6 +34,9 @@ public static void main(String[] args) {
 		Button bookFlight = new Button("Book A Flight");
 		GridPane.setConstraints(bookFlight,1,1);
 		
+		backButton = new Button("<-Back ");
+		GridPane.setConstraints(backButton,1,3);
+		
 		bookFlight.setOnAction(e->{
 			flightSearch fs = new flightSearch();
 			try {
@@ -43,7 +47,18 @@ public static void main(String[] args) {
 			}
 		});
 		
-		grid.getChildren().addAll(whatNext,bookFlight);
+		backButton.setOnAction(e->{ 
+			Login login = new Login();
+			try {
+				login.start(primaryStage);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
+		
+		
+		grid.getChildren().addAll(whatNext,bookFlight,backButton);
 		
 		
 		scene = new Scene(grid, 600,600);
